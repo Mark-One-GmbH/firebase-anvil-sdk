@@ -1,8 +1,9 @@
 allow_embedding: false
-package_name: Material_Design_24
-name: Material Design 24
+package_name: Firebase_Anvil_SDK
+name: Firebase Anvil SDK
 startup_form: Form1
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {title: firebase_anvil}
 services:
 - source: /runtime/services/tables.yml
   client_config: {}

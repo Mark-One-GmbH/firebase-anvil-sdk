@@ -1,7 +1,8 @@
 unique_ids:
   forms:
     Form1: BKP2BLHDKOQPF7QAG3TSH3VH6XON7V27
-  modules: {}
+  modules:
+    firebase: '1658439162806427922199816.97955'
   server_modules: {}
   assets:
     standard-page.html: 53ZV3CSRQDV66TVKJXWOIXFP3BLY5EBJ

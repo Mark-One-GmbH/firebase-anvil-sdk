@@ -7,4 +7,7 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
+  def form_show(self, **event_args):
     # Any code you write here will run when the form opens.
+    from .. import firebase
+
