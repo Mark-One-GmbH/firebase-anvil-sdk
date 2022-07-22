@@ -21,7 +21,7 @@ class Firebase:
     '''Initializes the firebase class'''
     
     #Make sure init app is only called once!
-    if self._initializeApp != None or self._firestore != None or self._getAuth != None:
+    if self._initializeApp != None or self._getFirestore != None or self._getAuth != None:
       raise ValueError('Firebase can only be intialized once')
     
     #Check credentials input value
@@ -35,10 +35,10 @@ class Firebase:
     self._getAuth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js")
   
     #initialize application
-    self._app = _initializeApp.initializeApp(firebaseConfig)
+    self._app = self._initializeApp.initializeApp(credentials_dict)
   
     #Initializse children classes
-    self.firestore.init_app(self._getFirestore,self._getFirestore.getFirestore(_app))
+    self.firestore.init_app(self._getFirestore,self._getFirestore.getFirestore(self._app))
     
 
 

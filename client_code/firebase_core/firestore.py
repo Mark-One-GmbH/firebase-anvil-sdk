@@ -12,7 +12,6 @@ class Firestore:
     self.doc = self._fs_proxy.doc
     self.collection = self._fs_proxy.collection
     self.setDoc = self._fs_proxy.setDoc
-    self.where = self._fs_proxy.where
     self.getDocs = self._fs_proxy.doc
     self.orderBy = self._fs_proxy.orderBy
     self.limit = self._fs_proxy.limit
@@ -26,6 +25,10 @@ class Firestore:
     #db refs
     self.db_ref = self.collection(self._db, "cities")
     
+    
+  def get_ref(self,collection):
+     return self.collection(self._db, collection)
+    
   '''
   This is a wrapper around the official Web9 Firestore SDK
   https://firebase.google.com/docs/reference/js/firestore_?authuser=0
@@ -35,9 +38,13 @@ class Firestore:
     '''Reads the document referred to by this DocumentReference'''
     return self._fs_proxy.getDocs(query)
   
-  def query(self,list_of_queries,query_constraints=None):
+  def query(self,reference,where):
     '''Creates a new immutable instance of Query that is extended to also include additional query constraints'''
-    return self._fs_proxy.query()
+    print(reference,where)
+    return self._fs_proxy.query(reference,where)
+  
+  def where(self,attribute,operation,value):
+    return self._fs_proxy.where(attribute,operation,value)
 
 # app = initializeApp.initializeApp(firebaseConfig)
 # db = firestore.getFirestore(app)

@@ -4,16 +4,21 @@
 
 
 cred = {
-    'apiKey': "AIzaSyBv8XOOpjNqOupqY6BOMeMuasWb6okUy-g",
-    'authDomain': "markone-qa.firebaseapp.com",
-    'projectId': "markone-qa",
-    'storageBucket': "markone-qa.appspot.com",
-    'messagingSenderId': "133733330920",
-    'appId': "1:133733330920:web:0c373a61b08e6273363e5d",
-    'measurementId': "G-R08RY8P8YR"
+    'apiKey': "AIzaSyDusPnQZzPbV8I_nnwKW1Oj5PbSj_0BLDs",
+    'authDomain': "development-945bf.firebaseapp.com",
+    'projectId': "development-945bf",
+    'storageBucket': "development-945bf.appspot.com",
+    'messagingSenderId': "273735084857",
+    'appId': "1:273735084857:web:4afc77ceec6c33fde556e8",
+    'measurementId': "G-ZTBXYR2MK4"
   }
 
 from . import firebase_core
-firebase_core.Firebase()
+firebase_core.firebase.initialize_app(cred)
+
+
+from .firebase_core import examples
+examples.get_multiple_documents()
+
 
 
