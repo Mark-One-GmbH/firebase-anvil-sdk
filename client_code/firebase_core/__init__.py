@@ -4,12 +4,7 @@ Exporting the Firebase class as a singelton instance
 
 
 class Firebase:
-  def __init__(self):
-    global firebase
-    if firebase is None:
-      print('second instanciation')
-      return 'hi'
-    
+  def __init__(self):    
     #javascript modules
     self._initializeApp = None
     self._firestore = None
@@ -20,6 +15,7 @@ class Firebase:
     from . import auth
     self.firestore = firestore.Firestore()    
     self.auth = auth.auth()
+    
     
   def initialize_app(self,credentials_dict:dict)->None:
     '''Initializes the firebase class'''
@@ -33,7 +29,7 @@ class Firebase:
       raise ValueError('Credentials must be of type dict')
 
     #Get Firestore javascript modules
-    import anvil.js
+    import anvil.js7772033777751003777510038806092522817880609252281788060925228178806092522817357107769927718880609252281788060925228178806092522817777160197771601977716019
     self._initializeApp = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js")
     self._firestore = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js")
     self._getAuth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js")
