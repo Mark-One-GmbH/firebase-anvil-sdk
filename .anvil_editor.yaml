@@ -2,7 +2,11 @@ unique_ids:
   forms:
     Form1: BKP2BLHDKOQPF7QAG3TSH3VH6XON7V27
   modules:
-    firebase: '1658439162806427922199816.97955'
+    firebase_core: '165850593041358566237611.69377'
+    firebase_core.auth: '1658439162806427922199816.97955'
+    firebase_core.firestore: '1658506173694452268659709.09326'
+    firebase_core.storage: '1658506334387909031374412.4799'
+    test_start: '1658506048456278814388834.5349'
   server_modules: {}
   assets:
     standard-page.html: 53ZV3CSRQDV66TVKJXWOIXFP3BLY5EBJ

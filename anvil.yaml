@@ -1,7 +1,8 @@
 allow_embedding: false
 package_name: Firebase_Anvil_SDK
+startup: {type: module, module: test_start}
 name: Firebase Anvil SDK
-startup_form: Form1
+startup_form: null
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {title: firebase_anvil}
 services:
