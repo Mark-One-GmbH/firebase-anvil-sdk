@@ -7,14 +7,14 @@ class Firebase:
   def __init__(self):    
     #javascript modules
     self._initializeApp = None
-    self._firestore = None
+    self._getFirestore = None
     self._getAuth = None
     self._app = None
     #Children classes
     from . import firestore
-    from . import auth
+    from . import authentication
     self.firestore = firestore.Firestore()    
-    self.auth = auth.auth()
+    self.auth = authentication.Authentication()
     
     
   def initialize_app(self,credentials_dict:dict)->None:
@@ -29,16 +29,16 @@ class Firebase:
       raise ValueError('Credentials must be of type dict')
 
     #Get Firestore javascript modules
-    import anvil.js7772033777751003777510038806092522817880609252281788060925228178806092522817357107769927718880609252281788060925228178806092522817777160197771601977716019
+    import anvil.js
     self._initializeApp = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js")
-    self._firestore = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js")
+    self._getFirestore = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js")
     self._getAuth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js")
   
     #initialize application
     self._app = _initializeApp.initializeApp(firebaseConfig)
   
     #Initializse children classes
-    self.firestore.init_app(firestore.getFirestore(_app))
+    self.firestore.init_app(self._getFirestore,self._getFirestore.getFirestore(_app))
     
 
 

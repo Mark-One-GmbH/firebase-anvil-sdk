@@ -1,7 +1,7 @@
 
 
-class Auth:
-  def __init__(self,config):
+class Authentication:
+  def __init__(self):
 #     import anvil.js
 #     self.initializeApp = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js")
 #     self.firestore = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js")
