@@ -1,16 +1,15 @@
 
 
 
-
 def get_multiple_documents():
   from .. import firebase_core
-  
   #get the firestore instance
   fs = firebase_core.firebase.firestore
+  print(dir(fs))
   #reference to the collection 'test'
   test_ref = fs.get_ref('test') 
   #create a query
-  query = fs.query(test_ref, fs.where("capital", "==", True));
+  query = fs.query(test_ref, fs.where("capital", "==", True))
   
   #execute the query
   for doc in fs.getDocs(query):
