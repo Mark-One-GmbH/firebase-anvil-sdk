@@ -2,22 +2,22 @@
 
 
 def get_multiple_documents():
+  #get the firestore modules
   from .. import firebase_core
-  #get the firestore instance
-  fs = firebase_core.firebase.firestore
-  print(dir(fs))
-  #reference to the collection 'test'
-  test_ref = fs.get_ref('test') 
-  #create a query
-  query = fs.query(test_ref, fs.where("capital", "==", True))
+  fs = firebase_core.firestore
+  #form query
+  query = fs.db.collection('test').where('name','==','hello')
+  #execute query
+  docs = fs.get_docs(query)
+  print(docs)
   
-  #execute the query
-  for doc in fs.getDocs(query):
-    print(doc)
-    print(doc.data())
-#   snapshop = await getDocs(q);
-#   querySnapshot.forEach((doc) => {
-#     // doc.data() is never undefined for query doc snapshots
-#     console.log(doc.id, " => ", doc.data());
-#   });
-  
+
+def get_single_document():
+  #get the firestore modules
+  from .. import firebase_core
+  fs = firebase_core.firestore
+  #get doc reference
+  doc_ref = fs.db.collection('test').doc('doc_uid')
+  #execute query
+  doc = fs.get_doc(doc_ref)
+  print(doc.data)

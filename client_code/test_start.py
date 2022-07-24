@@ -11,12 +11,14 @@ cred = {
     'measurementId': "G-ZTBXYR2MK4"
 }
 
+#iniitalize firebase
 from . import firebase_core
-firebase_core.firebase.initialize_app(cred)
+firebase_core.initialize_app(cred)
 
 
 from .firebase_core import examples
 examples.get_multiple_documents()
+examples.get_single_document()
 
 
 
