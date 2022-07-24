@@ -16,7 +16,6 @@ class Form1(Form1Template):
     from ..firebase import examples
     from datetime import datetime
     start = datetime.now()
-    ret = examples.get_multiple_documents(True)
-    print(datetime.now()-start)
+    ret = examples.get_multiple_documents()
     Notification(str(ret),timeout=100).show()
 

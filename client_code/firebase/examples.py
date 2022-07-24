@@ -2,9 +2,9 @@
 from ..firebase import firestore as fs
 
 """Read Data from Firestore"""
-def get_multiple_documents(use_cache=False):
+def get_multiple_documents(force_cache=False):
   query = fs.db.collection('test').where('name','==','hello')
-  docs = fs.get_docs(query,use_cache=use_cache)
+  docs = fs.get_docs(query,force_cache=force_cache)
   return docs
   
 
