@@ -13,7 +13,7 @@ cred = {
 
 #iniitalize firebase
 from . import firebase_core
-firebase_core.initialize_app(cred)
+firebase_core.initialize_client(cred)
 
 
 from .firebase_core import examples

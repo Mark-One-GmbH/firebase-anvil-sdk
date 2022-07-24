@@ -2,11 +2,11 @@ unique_ids:
   forms:
     Form1: BKP2BLHDKOQPF7QAG3TSH3VH6XON7V27
   modules:
-    firebase_client: '165850593041358566237611.69377'
-    firebase_client.authentication: '1658439162806427922199816.97955'
-    firebase_client.examples: '1658517922137419685801183.6009'
-    firebase_client.firestore: '1658506173694452268659709.09326'
-    firebase_client.storage: '1658506334387909031374412.4799'
+    firebase: '165850593041358566237611.69377'
+    firebase.authentication: '1658439162806427922199816.97955'
+    firebase.examples: '1658517922137419685801183.6009'
+    firebase.firestore: '1658506173694452268659709.09326'
+    firebase.storage: '1658506334387909031374412.4799'
     test_start: '1658506048456278814388834.5349'
   server_modules:
     firebase_server: '1658679873288202416840751.34958'

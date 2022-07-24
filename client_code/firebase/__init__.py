@@ -8,8 +8,8 @@ from . import authentication
 
     
     
-def initialize_app(config:dict)->None:
-  '''Initializes the firebase class'''
+def initialize_client(config:dict)->None:
+  '''Initializes the firebase class for client side environments'''
   
   #Check credentials input value
   if not isinstance(config,dict):
@@ -25,8 +25,19 @@ def initialize_app(config:dict)->None:
   #initialize application
   anvil.js.window.firebase.initializeApp(config)
   firestore.db =  anvil.js.window.firebase.firestore()
+  firestore.environment = 'client'
+
+def initialize_client(config:dict)->None:
+  '''Initializes the firebase class for server side environments'''
+  
+  #Check credentials input value
+  if not isinstance(config,dict):
+    raise ValueError('Credentials must be of type dict')
 
 
+  #initialize application
+  firestore.environment = 'client'
+  firestore.db =  None #todo get
     
 
 
