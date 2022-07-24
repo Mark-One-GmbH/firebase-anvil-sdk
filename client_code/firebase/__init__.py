@@ -2,11 +2,10 @@
 Exporting the Firebase class as a singelton instance
 """
 
-
+initialized = False
 from . import firestore
 from . import authentication
 
-    
     
 def initialize_client(config:dict)->None:
   '''Initializes the firebase class for client side environments'''
@@ -24,21 +23,14 @@ def initialize_client(config:dict)->None:
 
   #initialize application
   anvil.js.window.firebase.initializeApp(config)
+  enabled = firestore.enable_offline_persistance()
   firestore.db =  anvil.js.window.firebase.firestore()
   firestore.environment = 'client'
-
-def initialize_client(config:dict)->None:
-  '''Initializes the firebase class for server side environments'''
   
-  #Check credentials input value
-  if not isinstance(config,dict):
-    raise ValueError('Credentials must be of type dict')
+  #Initialization finished
+  global initialized
+  initialized = True
 
-
-  #initialize application
-  firestore.environment = 'client'
-  firestore.db =  None #todo get
-    
 
 
 

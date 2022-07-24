@@ -5,8 +5,21 @@ root level access to the firestore database, is iniitlaized from firebase core
 '''
 db = None
 
+def enable_offline_persistance(unlimited_cache_size=True):
+  '''Subsequent queries will use persistence, if it was enabled successfully'''
+  try:
+    import anvil.js
+    fs_proxy = anvil.js.window.firebase.firestore
+    if unlimited_cache_size: fs_proxy().settings({'cacheSizeBytes': fs_proxy.CACHE_SIZE_UNLIMITED})
+    fs_proxy().enablePersistence()
+  except Exception as e:
+    print(f"Error enableing firestore offline persistance {e}")
+    
+  
+
+
 '''Helper Functions'''
-def get_docs(query):
+def get_docs(query,use_cache=False):
   '''
   Executes a firestore query
   Returns: [(doc_uid,doc_dict),...]
@@ -15,7 +28,8 @@ def get_docs(query):
   documents = []
   
   #execute query
-  querySnapshot = query.get()  
+  source_option = 'cache' if use_cache else 'default'
+  querySnapshot = query.get({'source': source_option})  
   
   #serialize query to list of 
   def get_docs(doc): documents.append(Document(doc.id,proxy_to_dict(doc.data())))
@@ -23,7 +37,7 @@ def get_docs(query):
   
   return documents
 
-def get_doc(doc_ref):
+def get_doc(doc_ref,use_cache=False):
   '''
   Executes a firestore query
   Returns a Document
@@ -31,7 +45,8 @@ def get_doc(doc_ref):
     
   #execute query
   try:
-    doc = doc_ref.get()
+    source_option = 'cache' if use_cache else 'default'
+    doc = doc_ref.get({'source': source_option})  
   except Exception as e:
     return Document(exists = False)
   
