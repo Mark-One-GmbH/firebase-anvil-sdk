@@ -31,7 +31,6 @@ def enable_network():
   anvil.js.window.firebase.firestore.enableNetwork()
   
 
-
 '''Helper Functions'''
 def get_docs(query,force_cache=False):
   '''
