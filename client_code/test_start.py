@@ -16,9 +16,14 @@ from . import firebase
 firebase.initialize_client(cred)
 
 from . import examples
-examples.sign_up()
+#examples.sign_up()
+from datetime import datetime
+start = datetime.now()
 examples.sign_in()
+print(f'signing in took',datetime.now()-start)
+examples.get_user()
 examples.sign_out()
+examples.get_user()
 
 
 

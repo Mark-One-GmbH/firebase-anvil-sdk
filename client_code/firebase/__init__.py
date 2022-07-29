@@ -31,6 +31,9 @@ def initialize_client(config:dict)->None:
   
   #init authentication
   authentication.auth = anvil.js.window.firebase.auth()
+  #todo set persistance
+  #firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+
   
   
   #Initialization finished

@@ -12,7 +12,10 @@ def _auth():
 """Main Methods"""
 
 def get_user():
-  proxy_user = anvil.js.await_promise(_auth().currentUser)
+  try:
+    return FireUser(anvil.js.await_promise(_auth().currentUser))
+  except Exception as e:
+    return None
 
 def sign_out():
   anvil.js.await_promise(_auth().signOut())
@@ -33,13 +36,13 @@ def sign_in_with_email_and_password(email,password):
   except Exception as e:
     print(f"Error signing in to firestore",e)
 
-def listen_to_auth_state_changed(user,callback):
-  _auth().onAuthStateChanged(user,callback) 
 
 
 '''Wraps a Firestore proxy user'''
 class FireUser:
   def __init__(self,proxy_user):
+    if proxy_user is None:
+      raise ValueError('Unkown Firebase User')
     self.proxy_user = proxy_user
 
   @property
