@@ -25,6 +25,11 @@ examples.get_user()
 examples.sign_out()
 examples.get_user()
 
+import anvil.users
+start = datetime.now()
+anvil.users.login_with_form(remember_by_default=True)
+print(f'signing in anvil took',datetime.now()-start)
+
 
 
 
