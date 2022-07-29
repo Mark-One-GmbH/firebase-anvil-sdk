@@ -1,6 +1,31 @@
 
-from ..firebase import firestore as fs
+from .firebase import firestore as fs
+from .firebase import authentication as auth
 
+"""Firestore Authentication"""
+def get_user():
+  user = auth.get_user()
+  print(user)
+    
+def sign_up():
+  user = auth.create_user_with_email_and_password('test@testing.com','password')
+  print(user)
+
+
+def auth_state_changed(user):
+  print(f'auth state chagned',user)
+
+def sign_in():
+  user = auth.sign_in_with_email_and_password('test@testing.com','password')
+  auth.listen_to_auth_state_changed(user,auth_state_changed)
+
+def sign_out():
+  auth.sign_out()
+
+
+
+
+    
 """Read Data from Firestore"""
 def get_multiple_documents(force_cache=False):
   query = fs.db.collection('test').where('name','==','hello')

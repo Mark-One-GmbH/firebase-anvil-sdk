@@ -1,23 +1,47 @@
+import anvil.js
+
+'''
+root level access to the firestore database, is iniitlaized from firebase core
+'''
+auth = None
+
+def _auth():
+  import anvil.js
+  return anvil.js.window.firebase.auth()
+
+"""Main Methods"""
+
+def get_user():
+  proxy_user = anvil.js.await_promise(_auth().currentUser)
+
+def sign_out():
+  anvil.js.await_promise(_auth().signOut())
+
+  
+def create_user_with_email_and_password(email,password):
+  try:
+    userCredential = anvil.js.await_promise(_auth().createUserWithEmailAndPassword(email, password))
+    return FireUser(userCredential.user)
+  except Exception as e:
+    print(f"Error signing up to firestore",e)
 
 
-class Authentication:
-  def __init__(self):
-#     import anvil.js
-#     self.initializeApp = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js")
-#     self.firestore = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js")
-#     self.getAuth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js")
-    self.name = 'Hi'
+def sign_in_with_email_and_password(email,password):
+  try:
+    userCredential = anvil.js.await_promise(_auth().signInWithEmailAndPassword(email, password))
+    return FireUser(userCredential.user)
+  except Exception as e:
+    print(f"Error signing in to firestore",e)
+
+def listen_to_auth_state_changed(user,callback):
+  _auth().onAuthStateChanged(user,callback) 
 
 
+'''Wraps a Firestore proxy user'''
+class FireUser:
+  def __init__(self,proxy_user):
+    self.proxy_user = proxy_user
 
-
-# app = initializeApp.initializeApp(firebaseConfig)
-# db = firestore.getFirestore(app)
-# auth = getAuth.getAuth(app)
-
-
-# query = firestore.query(firestore.collection(db, "global_settings")) #, where("capital", "==", true))
-# querySnapshot = firestore.getDocs(query)
-
-# for doc in querySnapshot:
-#   print(doc)
+  @property
+  def uid(self):
+    return self.proxy_user.uid

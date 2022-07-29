@@ -15,12 +15,13 @@ cred = {
 from . import firebase
 firebase.initialize_client(cred)
 
-#from .firebase import examples
-#examples.get_multiple_documents()
-#examples.get_single_document()
+from . import examples
+examples.sign_up()
+examples.sign_in()
+examples.sign_out()
 
-import anvil
-anvil.open_form('Form1')
+
+
 
 
 

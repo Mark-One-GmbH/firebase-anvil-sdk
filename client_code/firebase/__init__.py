@@ -23,9 +23,15 @@ def initialize_client(config:dict)->None:
 
   #initialize application
   anvil.js.window.firebase.initializeApp(config)
-  enabled = firestore.enable_offline_persistance()
+  
+  #Init Firestoe
+  firestore.enable_offline_persistance()
   firestore.db =  anvil.js.window.firebase.firestore()
   firestore.environment = 'client'
+  
+  #init authentication
+  authentication.auth = anvil.js.window.firebase.auth()
+  
   
   #Initialization finished
   global initialized
