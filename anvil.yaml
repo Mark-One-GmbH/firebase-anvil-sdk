@@ -1,11 +1,14 @@
-allow_embedding: false
-package_name: Firebase_Anvil_SDK
-startup: {type: module, module: test_start}
-name: Firebase Anvil SDK
-startup_form: null
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {title: firebase_anvil}
+dependencies:
+- app_id: AT7WYPLUPD24TQWB
+  version: {dev: false}
 services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
+startup: {type: module, module: test_start}
+package_name: Firebase_Anvil_SDK
+allow_embedding: false
+name: Firebase Anvil SDK
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {title: firebase_anvil}
+startup_form: null
