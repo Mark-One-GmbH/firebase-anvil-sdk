@@ -9,3 +9,5 @@ class markone_core_test(markone_core_testTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+    data.data().articles.get_by_uid()
