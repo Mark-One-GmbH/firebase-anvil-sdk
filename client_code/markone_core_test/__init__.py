@@ -1,7 +1,7 @@
 from ._anvil_designer import markone_core_testTemplate
 from anvil import *
 
-from markone_core import data
+from markone_core.data import data
 
 class markone_core_test(markone_core_testTemplate):
   def __init__(self, **properties):
@@ -9,5 +9,5 @@ class markone_core_test(markone_core_testTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    data().articles.get_all()
 
-    data.data().articles.get_by_uid()
