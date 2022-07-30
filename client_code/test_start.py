@@ -15,20 +15,12 @@ cred = {
 from . import firebase
 firebase.initialize_client(cred)
 
+#Test some examples
 from . import examples
-#examples.sign_up()
-from datetime import datetime
-start = datetime.now()
 examples.sign_in()
 print(f'signing in took',datetime.now()-start)
-examples.get_user()
-examples.sign_out()
-examples.get_user()
 
-import anvil.users
-start = datetime.now()
-anvil.users.login_with_form(remember_by_default=True)
-print(f'signing in anvil took',datetime.now()-start)
+
 
 
 
