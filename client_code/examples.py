@@ -2,24 +2,48 @@
 from .firebase import firestore as fs
 from .firebase import authentication as auth
 
+def run_examples():
+  cred = {
+      'apiKey': "AIzaSyDusPnQZzPbV8I_nnwKW1Oj5PbSj_0BLDs",
+      'authDomain': "development-945bf.firebaseapp.com",
+      'projectId': "development-945bf",
+      'storageBucket': "development-945bf.appspot.com",
+      'messagingSenderId': "273735084857",
+      'appId': "1:273735084857:web:4afc77ceec6c33fde556e8",
+      'measurementId': "G-ZTBXYR2MK4"
+  }
+
+  #iniitalize firebase
+  from . import firebase
+  firebase.initialize_client(cred)
+
+  #Test some examples
+  import anvil.users
+  login_email()
+  user = get_user()
+  print(user)
+  #login_token()
+
 """Firebase Authentication"""
 def get_user():
   user = auth.get_user()
   print(user)
     
 def sign_up():
-  user = auth.create_user_with_email_and_password('test@testing.com','password')
-
+  user = auth.signup_with_email('test@testing.com','password')
 
 def auth_state_changed(user):
   print(f'auth state chagned',user)
 
-def sign_in():
-  user = auth.sign_in_with_email_and_password('test@testing.com','password')
+def login_email():
+  user = auth.login_with_email('test@testing.com','password')
+
+def login_token():
+  some_token = ''
+  user = auth.login_with_token(some_token)
 
 def sign_out():
   auth.sign_out()
-
 
 
 

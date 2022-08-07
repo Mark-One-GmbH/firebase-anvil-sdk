@@ -17,11 +17,11 @@ def get_user():
   except Exception as e:
     return None
 
-def sign_out():
+def logout():
   anvil.js.await_promise(_auth().signOut())
 
   
-def create_user_with_email_and_password(email,password):
+def signup_with_email(email,password):
   try:
     userCredential = anvil.js.await_promise(_auth().createUserWithEmailAndPassword(email, password))
     return FireUser(userCredential.user)
@@ -29,7 +29,7 @@ def create_user_with_email_and_password(email,password):
     print(f"Error signing up to firestore",e)
 
 
-def sign_in_with_email_and_password(email,password):
+def login_with_email(email,password):
   try:
     userCredential = anvil.js.await_promise(_auth().signInWithEmailAndPassword(email, password))
     return FireUser(userCredential.user)

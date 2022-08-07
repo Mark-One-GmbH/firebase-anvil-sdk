@@ -35,7 +35,6 @@ def initialize_client(config:dict)->None:
   #firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
   
-  
   #Initialization finished
   global initialized
   initialized = True
