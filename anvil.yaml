@@ -9,7 +9,7 @@ services:
   client_config: {allow_signup: true, enable_automatically: true, use_email: true,
     confirm_email: false, allow_remember_me: true, remember_me_days: 30}
   server_config: {user_table: users}
-startup: {type: module, module: test_start}
+startup: {type: module, module: _start}
 package_name: Firebase_Anvil_SDK
 allow_embedding: false
 name: Firebase Anvil SDK

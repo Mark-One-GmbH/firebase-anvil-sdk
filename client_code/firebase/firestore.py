@@ -6,7 +6,9 @@ root level access to the firestore database, is iniitlaized from firebase core
 db = None
 
 def enable_offline_persistance(unlimited_cache_size=True):
-  '''Subsequent queries will use persistence, if it was enabled successfully'''
+  '''Subsequent queries will use persistence, if it was enabled successfully
+  Can only be set after initialization
+  '''
   try:
     import anvil.js
     fs_proxy = anvil.js.window.firebase.firestore

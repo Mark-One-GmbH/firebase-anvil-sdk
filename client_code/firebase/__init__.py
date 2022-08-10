@@ -1,11 +1,13 @@
-"""
-Exporting the Firebase class as a singelton instance
-"""
+'''
+Main Firebase class that handles initialization and access to firebase services
+'''
 
 initialized = False
+
 from . import firestore
 from . import authentication
-
+from . import analytics
+from . import storage
     
 def initialize_client(config:dict)->None:
   '''Initializes the firebase class for client side environments'''

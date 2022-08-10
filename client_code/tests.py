@@ -2,7 +2,7 @@
 from .firebase import firestore as fs
 from .firebase import authentication as auth
 
-def run_examples():
+def run_tests():
   cred = {
       'apiKey': "AIzaSyDusPnQZzPbV8I_nnwKW1Oj5PbSj_0BLDs",
       'authDomain': "development-945bf.firebaseapp.com",
@@ -17,7 +17,7 @@ def run_examples():
   from . import firebase
   firebase.initialize_client(cred)
 
-  #Test some examples
+  #Test some
   import anvil.users
   login_email()
   user = get_user()
