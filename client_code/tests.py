@@ -15,7 +15,7 @@ def run_tests():
 
   #iniitalize firebase
   from . import firebase
-  firebase.initialize_client(cred)
+  firebase.init_client(cred)
 
   #Test some
   import anvil.users

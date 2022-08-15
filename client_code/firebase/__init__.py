@@ -9,7 +9,7 @@ from . import authentication
 from . import analytics
 from . import storage
     
-def initialize_client(config:dict)->None:
+def init_client(config:dict)->None:
   '''Initializes the firebase class for client side environments'''
   
   #Check credentials input value
