@@ -57,7 +57,7 @@ def get_doc(doc_ref,force_cache=False):
   Executes a firestore query
   Returns a Document
   '''
-    
+  
   try:
     #execute query
     source_option = 'cache' if force_cache else 'default' #default used database first, and if offline cache
@@ -70,7 +70,11 @@ def get_doc(doc_ref,force_cache=False):
   else:
     return Document(exists = False)
   
-
+def add_doc(doc_ref,doc_data):
+  try:
+    doc = doc_ref.add(doc_data)  
+  except Exception as e:
+    print('error adding doc')
 
 """Helper Functions"""
 def proxy_to_dict(proxy_obj):
