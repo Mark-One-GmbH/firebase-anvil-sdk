@@ -1,6 +1,4 @@
-dependencies:
-- app_id: AT7WYPLUPD24TQWB
-  version: {dev: true}
+dependencies: []
 services:
 - source: /runtime/services/tables.yml
   client_config: {enable_v2: true}
@@ -13,9 +11,17 @@ startup: {type: module, module: _start}
 package_name: Firebase_Anvil_SDK
 allow_embedding: false
 name: Firebase Anvil SDK
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null,
+  server_persist: true}
 metadata: {title: firebase_anvil}
 startup_form: null
+native_deps: {head_html: "<script>\nclass Listener{\n  constructor() {\n    this.unsubscribe;\n\
+    \    this.callback;\n  }\n  \n  start (ref,callback) {\n    this.callback = callback;\n\
+    \    this.unsubscribe = ref.onSnapshot((snapshot) => {\n        var docs = [];\n\
+    \        snapshot.forEach((doc) => {docs.push(doc);});\n        this.callback(docs)\n\
+    \    }, (error) => {\n        this.callback(error)\n    });    \n  }  \n\n}\n\n\
+    //returns a new empty js listener obj\nfunction new_listener() {return new Listener();}\n\
+    \  \n</script>\n"}
 db_schema:
   users:
     title: Users

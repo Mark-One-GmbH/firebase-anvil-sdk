@@ -37,6 +37,19 @@ def login_with_email(email,password):
     print(f"Error signing in to firestore",e)
 
 
+def login_with_token(token):
+  fs_user = anvil.js.await_promise(_auth().signInWithCustomToken(token))
+  
+
+
+def login_with_anvil():
+  '''should be called with an anvil user already logged in'''
+  #Get token from server
+  import anvil.server
+  token = anvil.server.call('fs_server_get_auth_token')
+  #authenticate with custom token
+  login_with_token(token)
+
 
 '''Wraps a Firestore proxy user'''
 class FireUser:

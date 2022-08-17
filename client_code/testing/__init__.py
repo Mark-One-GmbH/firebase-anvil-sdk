@@ -1,10 +1,13 @@
-# This is a package.
-# You can define variables and functions here, and use them from any form. For example, in a top-level form:
-#
-#    from . import Package1
-#
-#    Package1.say_hello()
-#
 
-def say_hello():
-  print("Hello, world")
+
+def run_all_tests():
+  from . import firebase
+  from . import auth
+  from . import firestore
+
+  firebase.test_init_fb()
+  auth.test_auth_with_anvil()
+  firestore.get_multiple_documents()
+  firestore.add_listener()
+  firestore.add_document()
+  

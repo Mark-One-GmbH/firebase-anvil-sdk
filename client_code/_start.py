@@ -1,8 +1,8 @@
 
 
 
-from .tests import run_tests
-run_tests()
+from .testing import run_all_tests
+run_all_tests()
 
 
 
