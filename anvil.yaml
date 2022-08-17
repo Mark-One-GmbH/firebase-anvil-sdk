@@ -8,7 +8,7 @@ services:
     confirm_email: false, allow_remember_me: true, remember_me_days: 30}
   server_config: {user_table: users}
 startup: {type: module, module: _start}
-package_name: Firebase_Anvil_SDK
+package_name: firebase_anvil
 allow_embedding: false
 name: Firebase Anvil SDK
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null,
