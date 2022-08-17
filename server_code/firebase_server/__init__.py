@@ -21,12 +21,12 @@ def fs_server_get_auth_token():
   user = anvil.users.get_user()
   user_uid = str(user.get_id())
   
-  #create additional claims
+  #create additional claims -> add specific user relevant claims to support security rules
   additional_claims = {
     'user_uid':user_uid,
   }
   
-  #Create Firebase Token
+  #Create Firebase Token and return string
   return auth.create_custom_token(user_uid, additional_claims).decode("utf-8") 
 
   
