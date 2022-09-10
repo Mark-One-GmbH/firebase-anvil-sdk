@@ -16,4 +16,8 @@ def run():
 
   #2. authenticate
 
+  #3. show test ui
+  import anvil
+  anvil.open_form('example.test_form')
+
   

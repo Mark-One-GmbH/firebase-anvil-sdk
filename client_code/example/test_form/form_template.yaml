@@ -10,4 +10,54 @@ components:
   name: add_doc_btn
   layout_properties: {grid_position: 'BUZTZV,FCJCIF'}
   event_bindings: {click: add_doc_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Set Document, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: set_doc_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: VWCYQW,NCQZEZ
+  event_bindings: {click: set_doc_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Update Document, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: update_doc
+  layout_properties:
+    col_widths: {}
+    grid_position: XVYGIM,XEQMUM
+  event_bindings: {click: update_doc_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Get Document, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: get_doc_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: HIFCBZ,AUAXKS
+  event_bindings: {click: get_doc_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Execute Query, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: get_query_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: AGQFRQ,SMZSFE
+  event_bindings: {click: get_query_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Set Listener, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: set_listener_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: FCJBQF,DQUQWW
+  event_bindings: {click: set_listener_btn_click}
 is_package: true
