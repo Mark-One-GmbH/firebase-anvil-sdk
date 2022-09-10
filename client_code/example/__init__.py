@@ -1,6 +1,10 @@
 
-def test_init_fb():
-  cred = {
+def run():
+  '''Run Firestore serverless example'''
+
+  #1. initialize firebase app
+  from ..firebase_client import initialize_app
+  initialize_app({
       'apiKey': "AIzaSyDusPnQZzPbV8I_nnwKW1Oj5PbSj_0BLDs",
       'authDomain': "development-945bf.firebaseapp.com",
       'projectId': "development-945bf",
@@ -8,10 +12,8 @@ def test_init_fb():
       'messagingSenderId': "273735084857",
       'appId': "1:273735084857:web:4afc77ceec6c33fde556e8",
       'measurementId': "G-ZTBXYR2MK4"
-  }
+  })
+
+  #2. authenticate
+
   
-  #iniitalize firebase
-  from .. import firebase_client
-  firebase_client.init_client(cred)
-
-

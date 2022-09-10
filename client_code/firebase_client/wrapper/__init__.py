@@ -1,5 +1,10 @@
-'''
-Contains several wrapper classes to ease interaction with the proxyobjects
-a wrapper always takes in a proxy_obj and exposes certain attributes/methods through python code
+# This is a package.
+# You can define variables and functions here, and use them from any form. For example, in a top-level form:
+#
+#    from .firebase_client import Package1
+#
+#    Package1.say_hello()
+#
 
-'''
+def say_hello():
+  print("Hello, world")

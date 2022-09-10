@@ -2,44 +2,31 @@
 Main Firebase class that handles initialization and access to firebase services
 '''
 
-initialized = False
+#main module
+import anvil.js
+proxy_firebase = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js")
+app = None #initializes late by calling intialize_app()
 
+#export sub modules
 from . import firestore
 from . import authentication
 from . import analytics
 from . import storage
+
     
-def init_client(config:dict)->None:
+def initialize_app(config:dict)->None:
   '''Initializes the firebase class for client side environments'''
   
   #Check credentials input value
   if not isinstance(config,dict):
     raise ValueError('Credentials must be of type dict')
-
-  #Get Firestore javascript modules
-  import anvil.js
-  anvil.js.import_from("https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js")
-  anvil.js.import_from("https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js")
-  anvil.js.import_from("https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js")
-
-
+  
   #initialize application
-  anvil.js.window.firebase.initializeApp(config)
+  global app
+  app = proxy_firebase.initializeApp(config)
   
   #Init Firestoe
-  firestore.enable_offline_persistance()
-  firestore.db =  anvil.js.window.firebase.firestore()
-  firestore.environment = 'client'
-  
-  #init authentication
-  authentication.auth = anvil.js.window.firebase.auth()
-  #todo set persistance
-  #firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-
-  
-  #Initialization finished
-  global initialized
-  initialized = True
+  firestore.init(app)
 
 
 

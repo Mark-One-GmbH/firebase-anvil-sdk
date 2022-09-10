@@ -1,8 +1,10 @@
 
 
-
-from .testing import run_all_tests
-run_all_tests()
+"""
+Run main exampel
+"""
+from .example import run
+run()
 
 
 
