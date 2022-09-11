@@ -25,7 +25,8 @@ def initialize_app(config:dict)->None:
   global app
   app = proxy_firebase.initializeApp(config)
   
-  #Init Firestoe
+  #Initialize sub modules
+  authentication.init(app)
   firestore.init(app)
 
 

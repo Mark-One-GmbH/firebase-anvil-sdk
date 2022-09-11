@@ -1,6 +1,8 @@
 from ._anvil_designer import test_formTemplate
 from anvil import *
 from ...firebase_client import firestore as fs
+from ...firebase_client import authentication as auth
+from datetime import datetime
 
 class test_form(test_formTemplate):
   def __init__(self, **properties):
@@ -46,13 +48,18 @@ class test_form(test_formTemplate):
     batch.commit()
 
   def sign_in_btn_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
-
+    start = datetime.now()
+    user = auth.login_with_email('mark.breuss@markone.at','1234567')
+    print(user,'took ',datetime.now()-start)
+    
   def sign_up_btn_click(self, **event_args):
-    pass
+    user = auth.signup_with_email('mark.breuss@markone.at','1234567')
+    print(user)
 
-
+  def get_user_btn_click(self, **event_args):
+    start = datetime.now()
+    user = auth.get_user()
+    print(user,'took ',datetime.now()-start)
 
  
 
