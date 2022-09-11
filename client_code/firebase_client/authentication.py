@@ -33,7 +33,6 @@ def login_with_email(email,password):
   return FireUser(userCredential.user)
 
 
-
 def login_with_token(token):
   fs_user = anvil.js.await_promise(proxy_auth.signInWithCustomToken(auth,token))
   
