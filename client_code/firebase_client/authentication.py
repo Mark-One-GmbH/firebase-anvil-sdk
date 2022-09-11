@@ -37,7 +37,6 @@ def login_with_token(token):
   fs_user = anvil.js.await_promise(proxy_auth.signInWithCustomToken(auth,token))
   
 
-
 '''Wraps a Firestore proxy user'''
 class FireUser:
   def __init__(self,proxy_user):
