@@ -4,6 +4,26 @@ container:
 components:
 - type: Button
   properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Sign In, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: sign_in_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: DVRVOI,FVTQCK
+  event_bindings: {click: sign_in_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Sign Up, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: sign_up_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: TJPZWN,TBOCLK
+  event_bindings: {click: sign_up_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
     foreground: '', visible: true, text: Add Document, font_size: null, font: '',
     spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
     bold: false, underline: false, icon: ''}

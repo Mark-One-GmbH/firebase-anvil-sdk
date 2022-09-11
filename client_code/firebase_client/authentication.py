@@ -1,29 +1,26 @@
+'''
+Firebase Authentication
+'''
+
 import anvil.js
+proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js")
+auth = proxy_auth.getAuth()
 
-'''
-root level access to the firestore database, is iniitlaized from firebase core
-'''
-auth = None
-
-def _auth():
-  import anvil.js
-  return anvil.js.window.firebase.auth()
 
 """Main Methods"""
-
 def get_user():
   try:
-    return FireUser(anvil.js.await_promise(_auth().currentUser))
+    return FireUser(anvil.js.await_promise(auth.currentUser))
   except Exception as e:
     return None
 
 def logout():
-  anvil.js.await_promise(_auth().signOut())
+  anvil.js.await_promise(proxy_auth.signOut(auth))
 
   
 def signup_with_email(email,password):
   try:
-    userCredential = anvil.js.await_promise(_auth().createUserWithEmailAndPassword(email, password))
+    userCredential = anvil.js.await_promise(proxy_auth.createUserWithEmailAndPassword(auth,email, password))
     return FireUser(userCredential.user)
   except Exception as e:
     print(f"Error signing up to firestore",e)
@@ -31,24 +28,15 @@ def signup_with_email(email,password):
 
 def login_with_email(email,password):
   try:
-    userCredential = anvil.js.await_promise(_auth().signInWithEmailAndPassword(email, password))
+    userCredential = anvil.js.await_promise(proxy_auth.signInWithEmailAndPassword(auth,email, password))
     return FireUser(userCredential.user)
   except Exception as e:
     print(f"Error signing in to firestore",e)
 
 
 def login_with_token(token):
-  fs_user = anvil.js.await_promise(_auth().signInWithCustomToken(token))
+  fs_user = anvil.js.await_promise(proxy_auth.signInWithCustomToken(auth,token))
   
-
-
-def login_with_anvil():
-  '''should be called with an anvil user already logged in'''
-  #Get token from server
-  import anvil.server
-  token = anvil.server.call('fs_server_get_auth_token')
-  #authenticate with custom token
-  login_with_token(token)
 
 
 '''Wraps a Firestore proxy user'''

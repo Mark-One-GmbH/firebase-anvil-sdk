@@ -41,10 +41,21 @@ class test_form(test_formTemplate):
     batch = fs.write_batch()
     doc_ref1 = fs.doc(fs.db,'test_collection','uid1')
     doc_ref2 = fs.doc(fs.db,'test_collection','uid2')
-    batch.set(doc_ref2)
-    batch.set(doc_ref2)
-
+    batch.set(doc_ref2,{'batch_key':'value'})
+    batch.set(doc_ref2,{'batch_key':'value'})
     batch.commit()
+
+  def sign_in_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def sign_up_btn_click(self, **event_args):
+    pass
+
+
+
+ 
+
 
 
 
