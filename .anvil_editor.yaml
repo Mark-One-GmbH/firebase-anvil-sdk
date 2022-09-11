@@ -6,6 +6,7 @@ unique_ids:
     firebase_client.firestore: '1658506173694452268659709.09326'
     example: '1662829365991842212836417.4106'
     firebase_client.wrapper.utility: '1660136171599683303649225.3441'
+    firebase_client.wrapper.batch: '16628740363361532185263.3560784'
     firebase_client.wrapper: '1662830652261685738388530.4375'
     firebase_client.authentication: '1658439162806427922199816.97955'
     firebase_client.wrapper.listener: '1662836242932886492821266.7662'

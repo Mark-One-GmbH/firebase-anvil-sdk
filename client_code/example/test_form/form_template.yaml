@@ -60,4 +60,14 @@ components:
     col_widths: {}
     grid_position: FCJBQF,DQUQWW
   event_bindings: {click: set_listener_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Batch Write, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: batch_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: GETFRQ,VCDRGV
+  event_bindings: {click: batch_btn_click}
 is_package: true

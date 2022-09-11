@@ -41,6 +41,9 @@ def get_doc(doc_ref)->tuple:
   else:
     return None,'Document does not exist'
 
+def delete_doc(doc_ref):
+  return proxy_fs.deleteDoc(doc_ref)
+  
 
 def get_docs(query)->list:
   '''ececutes a query and returns a list of uid,data tuples '''
@@ -58,6 +61,11 @@ def listen_to_docs(query,callback):
   l = Listener(callback)
   l.unsubscribe = proxy_fs.onSnapshot(query,l._proxy_callback)
   return l
+
+def write_batch():
+  from .wrapper.batch import Batch
+  return Batch(proxy_fs.writeBatch(db))
+  
 
 
 

@@ -37,6 +37,16 @@ class test_form(test_formTemplate):
   def listener_changed(self,data):
     Notification('new data arrived',timeout=5).show()
 
+  def batch_btn_click(self, **event_args):
+    batch = fs.write_batch()
+    doc_ref1 = fs.doc(fs.db,'test_collection','uid1')
+    doc_ref2 = fs.doc(fs.db,'test_collection','uid2')
+    batch.set(doc_ref2)
+    batch.set(doc_ref2)
+
+    batch.commit()
+
+
 
 
 
