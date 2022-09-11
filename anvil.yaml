@@ -15,13 +15,7 @@ runtime_options: {version: 2, client_version: '3', server_version: python3-full,
   server_persist: true}
 metadata: {title: firebase_anvil}
 startup_form: null
-native_deps: {head_html: "<script>\nclass Listener{\n  constructor() {\n    this.unsubscribe;\n\
-    \    this.callback;\n  }\n  \n  start (ref,callback) {\n    this.callback = callback;\n\
-    \    this.unsubscribe = ref.onSnapshot((snapshot) => {\n        var docs = [];\n\
-    \        snapshot.forEach((doc) => {docs.push(doc);});\n        this.callback(docs)\n\
-    \    }, (error) => {\n        this.callback(error)\n    });    \n  }  \n\n}\n\n\
-    //returns a new empty js listener obj\nfunction new_listener() {return new Listener();}\n\
-    \  \n</script>\n"}
+native_deps: {head_html: ''}
 db_schema:
   users:
     title: Users
