@@ -3,10 +3,29 @@ proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.4/fireba
 db = None #initialized with init() -> late
 
 
-def init(app):
+def init(app,enable_offline_cache):
   '''initalizes the firestore module'''
   global db
-  db = proxy_fs.getFirestore(app);
+  db = proxy_fs.getFirestore(app)
+
+  #TODO configure cache size
+
+  #Offline Caching
+  if enable_offline_cache:
+    try:
+      anvil.js.await_promise(proxy_fs.enableIndexedDbPersistence(db))
+    except Exception as e:
+      print('Error enabeling offline persistance',e)
+    
+def disable_network():
+  '''forces all subsequent queries to the offline cache'''
+  anvil.js.await_promise(proxy_fs.disableNetwork(db))
+
+def enable_network():
+  '''reverts disable_network'''
+  anvil.js.await_promise(proxy_fs.disableNetwork(db))
+  
+  
 
 '''Helper Methods'''
 def collection(db,collection_name):

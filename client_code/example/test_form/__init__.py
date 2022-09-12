@@ -61,6 +61,17 @@ class test_form(test_formTemplate):
     user = auth.get_user()
     print(user,'took ',datetime.now()-start)
 
+  def sign_in_token_btn_click(self, **event_args):
+    start = datetime.now()
+    import anvil.server
+    fs_token = anvil.server.call('fs_server_get_auth_token')
+    user = auth.sign_in_with_token(fs_token)
+    print(user,'token took ',datetime.now()-start)
+
+  def logout_btn_click(self, **event_args):
+    auth.logout()
+
+
  
 
 

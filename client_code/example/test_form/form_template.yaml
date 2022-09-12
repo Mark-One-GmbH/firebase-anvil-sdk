@@ -24,6 +24,26 @@ components:
   event_bindings: {click: sign_up_btn_click}
 - type: Button
   properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Sign Token, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: sign_in_token_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: VRHFWE,TMSIOO
+  event_bindings: {click: sign_in_token_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Logout, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: logout_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: QPOLNM,IIGHUO
+  event_bindings: {click: logout_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
     foreground: '', visible: true, text: Get User, font_size: null, font: '', spacing_above: small,
     icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
     underline: false, icon: ''}

@@ -14,7 +14,7 @@ from . import analytics
 from . import storage
 
     
-def initialize_app(config:dict)->None:
+def initialize_app(config:dict,enable_offline_cache=False)->None:
   '''Initializes the firebase class for client side environments'''
   
   #Check credentials input value
@@ -27,7 +27,9 @@ def initialize_app(config:dict)->None:
   
   #Initialize sub modules
   authentication.init(app)
-  firestore.init(app)
+  firestore.init(app,enable_offline_cache)
+
+
 
 
 
