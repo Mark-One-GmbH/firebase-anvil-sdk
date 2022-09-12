@@ -49,7 +49,7 @@ class test_form(test_formTemplate):
 
   def sign_in_btn_click(self, **event_args):
     start = datetime.now()
-    user = auth.login_with_email('mark.breuss@markone.at','1234567')
+    user = auth.sign_in_with_email('mark.breuss@markone.at','1234567')
     print(user,'took ',datetime.now()-start)
     
   def sign_up_btn_click(self, **event_args):

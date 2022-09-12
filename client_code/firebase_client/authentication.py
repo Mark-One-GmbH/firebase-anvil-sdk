@@ -16,6 +16,7 @@ def get_user():
   try:
     return FireUser(anvil.js.await_promise(auth.currentUser))
   except Exception as e:
+    print('No user found ',e)
     return None
 
 def logout():
@@ -27,13 +28,25 @@ def signup_with_email(email,password):
   return FireUser(userCredential.user)
 
 
-
-def login_with_email(email,password):
+def sign_in_with_email(email,password):
+  '''Checks if a user is already logged in, if not attempts login flow'''
+  #1.check if user is already logged in
+  #TODO check if emails match!
+  current_user = get_user()
+  if current_user: return current_user
+  
+  #2. Attempt user login
   userCredential = anvil.js.await_promise(proxy_auth.signInWithEmailAndPassword(auth,email, password))
   return FireUser(userCredential.user)
 
 
 def login_with_token(token):
+  '''Login with a custom token generated with the firebase sdk'''
+  #1.check if user is already logged in
+  current_user = get_user()
+  if current_user: return current_user
+    
+  #2. Attempt user login
   fs_user = anvil.js.await_promise(proxy_auth.signInWithCustomToken(auth,token))
   
 
