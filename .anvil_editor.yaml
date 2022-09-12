@@ -15,5 +15,7 @@ unique_ids:
     firebase_client: '165850593041358566237611.69377'
     readme: '1660134444755423793699391.02496'
     firebase_client.storage: '1658506334387909031374412.4799'
-  server_modules: {}
+  server_modules:
+    firebase_server: '1663011268297829483484558.114'
+    firebase_server.sdk_keys: '1663011276730974321974832.8445'
   assets: {}
