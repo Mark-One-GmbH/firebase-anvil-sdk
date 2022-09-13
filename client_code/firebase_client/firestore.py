@@ -46,8 +46,9 @@ def query(collection,where):
 def add_doc(collection,doc_data):
   return proxy_fs.addDoc(collection,doc_data)
 
-def set_doc(doc_ref,doc_data):
-  return proxy_fs.setDoc(doc_ref,doc_data)
+def set_doc(doc_ref,doc_data,merge=False):
+  '''Set a document'''
+  return proxy_fs.setDoc(doc_ref,doc_data,{'merge':merge})
 
 def update_doc(doc_ref,update_dict):
   return proxy_fs.updateDoc(doc_ref,update_dict)
@@ -84,6 +85,12 @@ def listen_to_docs(query,callback):
 def write_batch():
   from .wrapper.batch import Batch
   return Batch(proxy_fs.writeBatch(db))
+
+def run_transaction(function):
+  '''Takes in a function which must be run as a transaction'''
+  return anvil.js.await_promise(proxy_fs.runTransaction(db,function))
+
+
   
 
 

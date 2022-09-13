@@ -120,4 +120,44 @@ components:
     col_widths: {}
     grid_position: GETFRQ,VCDRGV
   event_bindings: {click: batch_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Run Transaction, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: transaction_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: AVXLCD,DPMRMG
+  event_bindings: {click: transaction_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Upload Media, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: upload_media_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: EWNNQJ,ZWOACN
+  event_bindings: {click: upload_media_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Download media, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: download_media_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: UTUZGG,PXLKUM
+  event_bindings: {click: download_media_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Log Event, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: log_event_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: NDKPUG,OYOBKZ
+  event_bindings: {click: log_event_btn_click}
 is_package: true

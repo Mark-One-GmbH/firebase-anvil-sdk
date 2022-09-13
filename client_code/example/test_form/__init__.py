@@ -2,6 +2,7 @@ from ._anvil_designer import test_formTemplate
 from anvil import *
 from ...firebase_client import firestore as fs
 from ...firebase_client import authentication as auth
+from ...firebase_client import storage,analytics
 from datetime import datetime
 
 class test_form(test_formTemplate):
@@ -14,8 +15,8 @@ class test_form(test_formTemplate):
     
   def set_doc_btn_click(self, **event_args):
     doc_ref = fs.doc(fs.db,'test_collection','some_uid')
-    fs.set_doc(doc_ref,{'key':'some_value'})
-    
+    ret = fs.set_doc(doc_ref,{'key':'some_value'})
+
   def update_doc_click(self, **event_args):
     doc_ref = fs.doc(fs.db,'test_collection','some_uid')
     fs.update_doc(doc_ref,{'key':'new_value'})
@@ -70,6 +71,40 @@ class test_form(test_formTemplate):
 
   def logout_btn_click(self, **event_args):
     auth.logout()
+
+  def transaction_btn_click(self, **event_args):
+    transaction = fs.run_transaction(self.transaction_function)
+
+  def transaction_function(self,transaction):
+    #Define two document references to work with
+    doc_ref1 = fs.doc(fs.db,'test_collection','uid1')
+    doc_ref2 = fs.doc(fs.db,'test_collection','uid2')
+    #read from doc 1
+    doc1 = transaction.get(doc_ref1)
+    #write to doc 2
+    transaction.update(doc_ref2, { 'new_value': 1234 })
+
+  def upload_media_btn_click(self, **event_args):
+    import anvil
+    file = anvil.URLMedia("https://anvil.works/ide/img/banner-100.png")
+    ref = storage.ref('images/test1.png')
+    storage.upload_media(ref,file)
+    
+
+  def download_media_btn_click(self, **event_args):
+    ref = storage.ref('images/test1.png')
+    url = storage.get_download_url(ref)
+    print(url)
+
+  def log_event_btn_click(self, **event_args):
+    analytics.log_event('testevent')
+
+
+
+
+
+
+
 
 
  
