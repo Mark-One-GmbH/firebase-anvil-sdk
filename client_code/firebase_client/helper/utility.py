@@ -40,6 +40,7 @@ def to_proxy(obj):
   Output: a Value 
   
   '''
+  return obj
   if isinstance(obj,datetime):
     return anvil.js.new(Date,datetime.timestamp(obj)* 1000)
   elif isinstance(obj,dict):

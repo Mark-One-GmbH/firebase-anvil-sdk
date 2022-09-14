@@ -8,7 +8,7 @@ from datetime import datetime
 class test_form(test_formTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-
+    return
     #test conversion
     doc_ref = fs.doc(fs.db,'test','conversion_test')
     doc_uid,doc_data = fs.get_doc(doc_ref)
