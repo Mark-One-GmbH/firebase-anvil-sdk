@@ -9,6 +9,17 @@ class test_form(test_formTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
 
+    #test conversion
+    doc_ref = fs.doc(fs.db,'test','conversion_test')
+    doc_uid,doc_data = fs.get_doc(doc_ref)
+    print(doc_data)
+    doc_ref2 = fs.doc(fs.db,'test_collection','conversion_test_in')
+    fs.set_doc(doc_ref2,{
+      'now':datetime.now()
+    })
+
+    
+
   def add_doc_btn_click(self, **event_args):
     collection = fs.collection(fs.db,'test_collection')
     fs.add_doc(collection,{'key':'some_value','key2':'value2'})

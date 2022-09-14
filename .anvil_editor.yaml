@@ -6,14 +6,14 @@ unique_ids:
   modules:
     firebase_client.firestore: '1658506173694452268659709.09326'
     example: '1662829365991842212836417.4106'
-    firebase_client.wrapper.utility: '1660136171599683303649225.3441'
-    firebase_client.wrapper.batch: '16628740363361532185263.3560784'
-    firebase_client.wrapper: '1662830652261685738388530.4375'
+    firebase_client.helper.listener: '1662836242932886492821266.7662'
     firebase_client.authentication: '1658439162806427922199816.97955'
-    firebase_client.wrapper.listener: '1662836242932886492821266.7662'
+    firebase_client.helper.utility: '1660136171599683303649225.3441'
     firebase_client.analytics: '1659111463032130625789397.75449'
     _start: '1658506048456278814388834.5349'
+    firebase_client.helper.batch: '16628740363361532185263.3560784'
     firebase_client: '165850593041358566237611.69377'
+    firebase_client.helper: '1662830652261685738388530.4375'
     readme: '1660134444755423793699391.02496'
     firebase_client.storage: '1658506334387909031374412.4799'
   server_modules:
