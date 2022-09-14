@@ -16,22 +16,23 @@ def from_proxy(proxy_obj):
     Supports: Arrays, Dicts, Firestore Timestamps
     TODO: Geopoint, References
   '''
-  try:
-    if isinstance(proxy_obj, proxy_type):
-      '''Proxy Type Timestamp, Dic'''
-      if getattr(proxy_obj, "toMillis", None):
-        return datetime.fromtimestamp(proxy_obj.toMillis()/1000.0)
-      else:
-        #can keys be of type proxy obj?
-        return dict([(k,from_proxy(v)) for k,v in dict(proxy_obj).items()])
-    elif isinstance(proxy_obj,list):
-      '''Proxy Type Array'''
-      return [from_proxy(i) for i in proxy_obj]
+  return proxy_obj
+  print(proxy_obj)
+  if isinstance(proxy_obj, proxy_type):
+    '''Proxy Type Timestamp, Dic'''
+    if getattr(proxy_obj, "toMillis", None):
+      return datetime.fromtimestamp(proxy_obj.toMillis()/1000.0)
     else:
-      '''No proxy obj'''
-      return proxy_obj
-  except Exception as e:
-    print(f"Error converting obj{proxy_obj}")
+      #can keys be of type proxy obj?
+      return dict([(k,from_proxy(v)) for k,v in dict(proxy_obj).items()])
+  elif isinstance(proxy_obj,list):
+    '''Proxy Type Array'''
+    return [from_proxy(i) for i in proxy_obj]
+  else:
+    '''No proxy obj'''
+    return proxy_obj
+
+
 
 def to_proxy(obj):
   '''
