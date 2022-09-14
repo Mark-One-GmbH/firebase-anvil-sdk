@@ -16,8 +16,6 @@ def from_proxy(proxy_obj):
     Supports: Arrays, Dicts, Firestore Timestamps
     TODO: Geopoint, References
   '''
-  return proxy_obj
-  print(proxy_obj)
   if isinstance(proxy_obj, proxy_type):
     '''Proxy Type Timestamp, Dic'''
     if getattr(proxy_obj, "toMillis", None):
@@ -40,7 +38,6 @@ def to_proxy(obj):
   Output: a Value 
   
   '''
-  return obj
   if isinstance(obj,datetime):
     return anvil.js.new(Date,datetime.timestamp(obj)* 1000)
   elif isinstance(obj,dict):

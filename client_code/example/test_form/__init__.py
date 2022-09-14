@@ -8,15 +8,7 @@ from datetime import datetime
 class test_form(test_formTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
-    return
-    #test conversion
-    doc_ref = fs.doc(fs.db,'test','conversion_test')
-    doc_uid,doc_data = fs.get_doc(doc_ref)
-    print(doc_data)
-    doc_ref2 = fs.doc(fs.db,'test_collection','conversion_test_in')
-    fs.set_doc(doc_ref2,{
-      'now':datetime.now()
-    })
+
 
     
 
@@ -48,7 +40,7 @@ class test_form(test_formTemplate):
     q = fs.query(test_collection,fs.where('key','==','some_value'))
     listener = fs.listen_to_docs(q,self.listener_changed)
 
-  def listener_changed(self,data):
+  def listener_changed(self,docs):
     Notification('new data arrived',timeout=5).show()
 
   def batch_btn_click(self, **event_args):
@@ -109,6 +101,16 @@ class test_form(test_formTemplate):
 
   def log_event_btn_click(self, **event_args):
     analytics.log_event('testevent')
+
+  def test_conversion_btn_click(self, **event_args):
+    doc_ref = fs.doc(fs.db,'test','conversion_test')
+    doc_uid,doc_data = fs.get_doc(doc_ref)
+    print(doc_data)
+    doc_ref2 = fs.doc(fs.db,'test_collection','conversion_test_in')
+    fs.set_doc(doc_ref2,{
+      'now':datetime.now()
+    })
+
 
 
 

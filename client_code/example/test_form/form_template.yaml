@@ -160,4 +160,14 @@ components:
     col_widths: {}
     grid_position: NDKPUG,OYOBKZ
   event_bindings: {click: log_event_btn_click}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Test Conversion, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: test_conversion_btn
+  layout_properties:
+    col_widths: {}
+    grid_position: RBAYEU,YZUUNE
+  event_bindings: {click: test_conversion_btn_click}
 is_package: true
