@@ -15,8 +15,6 @@ TODO:
 - make server intializable from outside app
 - check in with official python sdk
 - build demo app
- xcfv
- 
 - publish to forum!
 
 DONE:
