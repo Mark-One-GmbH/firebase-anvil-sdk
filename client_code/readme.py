@@ -8,7 +8,8 @@ Nice To Have:
 - optional parameter to pass a callback function to get data async
 - callback for logout/login event
 
-TODO: 
+TODO:
+- get pending write (offline cache)
 - wrap tranaction in class and build in conversion
 - orderby, sort, limit startat, startafter
 - make server intializable from outside app
