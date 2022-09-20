@@ -5,7 +5,7 @@ proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.4/fireba
 db = None #initialized with init() -> late
 
 
-def init(app,enable_offline_cache):
+def init(app,enable_offline_cache=False):
   '''initalizes the firestore module'''
   global db
   db = proxy_fs.getFirestore(app)
@@ -26,8 +26,7 @@ def disable_network():
 def enable_network():
   '''reverts disable_network'''
   anvil.js.await_promise(proxy_fs.disableNetwork(db))
-  
-  
+
 
 '''Helper Methods'''
 def collection(db,collection_name):
