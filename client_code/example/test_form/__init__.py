@@ -10,8 +10,6 @@ class test_form(test_formTemplate):
     self.init_components(**properties)
 
 
-    
-
   def add_doc_btn_click(self, **event_args):
     collection = fs.collection(fs.db,'test_collection')
     fs.add_doc(collection,{'key':'some_value','key2':'value2'})

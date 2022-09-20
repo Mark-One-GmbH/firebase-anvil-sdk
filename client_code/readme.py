@@ -9,22 +9,11 @@ Nice To Have:
 - callback for logout/login event
 
 TODO:
+- write documentation
 - get pending write (offline cache)
 - wrap tranaction in class and build in conversion
-- orderby, sort, limit startat, startafter
+- startat, startafter
 - make server intializable from outside app
-- check in with official python sdk
-- build demo app
 - publish to forum!
-
-DONE:
-- converter js dict to python dict
-- authenticate with firebase from the anvil user system
-- Build in offline caching option
-- Transactions
-- merge true optional parameter for set statements
-- Storage -> store and retrieve blob objects
-- Analytics
-
 
 '''
