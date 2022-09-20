@@ -95,7 +95,6 @@ class test_form(test_formTemplate):
   def download_media_btn_click(self, **event_args):
     ref = storage.ref('images/test1.png')
     url = storage.get_download_url(ref)
-    print(url)
 
   def log_event_btn_click(self, **event_args):
     analytics.log_event('testevent')
