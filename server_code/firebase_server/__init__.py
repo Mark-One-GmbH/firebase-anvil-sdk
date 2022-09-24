@@ -5,12 +5,11 @@ from firebase_admin import credentials, firestore, storage, auth, messaging
 
 def init_firebase_server(skd_config,bucket_id=None):
   '''Intializes the serer side firestore sdk'''
-  cred = credentials.Certificate(sdk_keys.get_firestore_sdk_config())
   if bucket_id is None:
-    firebase_admin.initialize_app(cred)
+    firebase_admin.initialize_app(credentials.Certificate(skd_config))
     return firestore.client()
   else:
-    firebase_admin.initialize_app(cred,{'storageBucket': bucket_id})
+    firebase_admin.initialize_app(credentials.Certificate(skd_config),{'storageBucket': bucket_id})
     return firestore.client(), storage.bucket()
 
   
