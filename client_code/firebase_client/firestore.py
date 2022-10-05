@@ -56,13 +56,26 @@ def add_doc(collection,doc_data,blocking=True):
   else:
     anvil.js.call('addDoc',proxy_fs,collection,utility.to_proxy(doc_data))
 
-def set_doc(doc_ref,doc_data,merge=False):
+def set_doc(doc_ref,doc_data,merge=False,blocking=True):
   '''Set a document'''
-  return proxy_fs.setDoc(doc_ref,utility.to_proxy(doc_data),{'merge':merge})
+  if blocking:
+    return proxy_fs.setDoc(doc_ref,utility.to_proxy(doc_data),{'merge':merge})
+  else:
+    anvil.js.call('setDoc',proxy_fs,doc_ref,utility.to_proxy(doc_data),merge)
 
-def update_doc(doc_ref,update_dict):
-  return proxy_fs.updateDoc(doc_ref,utility.to_proxy(update_dict))
+def update_doc(doc_ref,update_dict,blocking=True):
+  if blocking:
+    return proxy_fs.updateDoc(doc_ref,utility.to_proxy(update_dict))
+  else:
+    anvil.js.call('updateDoc',proxy_fs,doc_ref,utility.to_proxy(update_dict))
 
+def delete_doc(doc_ref,blocking=True):
+  if blocking:
+    return proxy_fs.deleteDoc(doc_ref)
+  else:
+    anvil.js.call('deleteDoc',proxy_fs,doc_ref)
+
+  
 def get_doc(doc_ref)->tuple:
   '''Returns uid,data or None,Error '''
   doc_snap = proxy_fs.getDoc(doc_ref)
@@ -71,9 +84,7 @@ def get_doc(doc_ref)->tuple:
   else:
     return None,'Document does not exist'
 
-def delete_doc(doc_ref):
-  return proxy_fs.deleteDoc(doc_ref)
-  
+
 
 def get_docs(query)->list:
   '''ececutes a query and returns a list of uid,data tuples '''

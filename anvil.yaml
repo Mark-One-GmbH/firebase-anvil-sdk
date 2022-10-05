@@ -16,7 +16,9 @@ runtime_options: {version: 2, client_version: '3', server_version: python3-full,
 metadata: {title: Firebase Anvil SDK, description: Firebase Anvil SDK}
 startup_form: null
 native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.addDoc(collection,data)}\n\
-    \  \n</script>"}
+    function setDoc(fs,doc_ref,data,merge) {fs.setDoc(doc ,data,{'merge':merge})}\n\
+    function updateDoc(fs,doc_ref,data) {fs.updateDoc(doc ,data)}\nfunction deleteDoc(fs,doc_ref)\
+    \ {fs.deleteDoc(doc_ref)}\n\n  \n</script>"}
 db_schema:
   users:
     title: Users
