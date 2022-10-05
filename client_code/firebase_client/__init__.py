@@ -16,7 +16,7 @@ from . import storage
     
 def initialize_app(config:dict,enable_offline_cache=False)->None:
   '''Initializes the firebase class for client side environments'''
-  anvil.js.report_all_exceptions()
+  anvil.js.report_all_exceptions(True)
   
   #Check credentials input value
   if not isinstance(config,dict):
