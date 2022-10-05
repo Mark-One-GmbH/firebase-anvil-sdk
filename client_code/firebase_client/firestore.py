@@ -50,8 +50,11 @@ def query(collection,where):
   
 
 '''Data Manipulation'''
-def add_doc(collection,doc_data):
-  proxy_fs.addDoc(collection,utility.to_proxy(doc_data))
+def add_doc(collection,doc_data,blocking=True):
+  if blocking:
+    return proxy_fs.addDoc(collection,utility.to_proxy(doc_data))
+  else:
+    anvil.js.call('addDoc',proxy_fs,collection,utility.to_proxy(doc_data))
 
 def set_doc(doc_ref,doc_data,merge=False):
   '''Set a document'''
