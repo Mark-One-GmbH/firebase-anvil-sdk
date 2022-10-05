@@ -51,7 +51,7 @@ def query(collection,where):
 
 '''Data Manipulation'''
 def add_doc(collection,doc_data):
-  return proxy_fs.addDoc(collection,utility.to_proxy(doc_data))
+  proxy_fs.addDoc(collection,utility.to_proxy(doc_data))
 
 def set_doc(doc_ref,doc_data,merge=False):
   '''Set a document'''
