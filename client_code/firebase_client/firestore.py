@@ -84,11 +84,15 @@ def get_doc(doc_ref)->tuple:
   else:
     return None,'Document does not exist'
 
-
-
-def get_docs(query)->list:
-  '''ececutes a query and returns a list of uid,data tuples '''
-  querySnapshot = proxy_fs.getDocs(query);
+def get_docs(query,source=None)->list:
+  '''ececutes a query and returns a list of uid,data tuples 
+    use: source = "cache" to enfore reads from cache
+  '''
+  if source is None:
+    querySnapshot = proxy_fs.getDocs(query);
+  else:
+    querySnapshot = proxy_fs.getDocs(query,{'source':source});
+    
   ret_list = []
   def get_docs(doc):
     ret_list.append((doc.id,utility.from_proxy(doc.data())))
