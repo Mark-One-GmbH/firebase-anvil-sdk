@@ -10,7 +10,7 @@ def init(app,enable_offline_cache=False):
   global db
   db = proxy_fs.getFirestore(app)
 
-  #TODO configure cache size
+  #TODO configure cache size!
 
   #Offline Caching
   if enable_offline_cache:
