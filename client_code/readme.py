@@ -15,6 +15,5 @@ TODO:
 - wrap tranaction in class and build in conversion
 - startat, startafter
 - make server intializable from outside app
-- publish to forum!
 
 '''
