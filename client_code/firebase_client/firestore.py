@@ -1,7 +1,7 @@
 import anvil.js
 from .helper import utility
 
-proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js")
+proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js")
 db = None #initialized with init() -> late
 
 
@@ -15,7 +15,7 @@ def init(app,enable_offline_cache=False):
   #Offline Caching
   if enable_offline_cache:
     try:
-      anvil.js.await_promise(proxy_fs.enableIndexedDbPersistence(db))
+      persistance = proxy_fs.enableIndexedDbPersistence()
     except Exception as e:
       print('Error enabeling offline persistance',e)
     

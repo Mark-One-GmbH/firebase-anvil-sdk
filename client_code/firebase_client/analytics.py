@@ -1,5 +1,5 @@
 import anvil.js
-proxy_analytics = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js")
+proxy_analytics = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js")
 analytics = None #initialized with init() -> late
 
 
