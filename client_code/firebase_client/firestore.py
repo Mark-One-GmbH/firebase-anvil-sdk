@@ -16,7 +16,6 @@ def init(app,enable_offline_cache=False):
   if enable_offline_cache:
     try:
       ret = anvil.js.call('enableIndexedDbPersistence',proxy_fs,db)
-      print('offline enabled',ret)
     except Exception as e:
       print('Error enabeling offline persistance',e)
     
