@@ -33,7 +33,7 @@ def collection(db,collection_name):
   return proxy_fs.collection(db,collection_name)
 
 def doc(db,collection_name,doc_uid):
-  return proxy_fs.doc(db, collection_name, doc_uid)
+  return proxy_fs.doc(db, str(collection_name), str(doc_uid))
 
 def where(key,operator,value):
   return proxy_fs.where(key,operator,value)
