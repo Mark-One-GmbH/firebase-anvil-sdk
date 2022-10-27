@@ -58,6 +58,9 @@ class FireUser:
   def email(self):
     return self.proxy_user.email
 
+  def logout(self):
+    self.proxy_user.logout()
+  
   def __repr__(self):
     try:
       return f"<FireUser {self.uid} {self.email}>"
