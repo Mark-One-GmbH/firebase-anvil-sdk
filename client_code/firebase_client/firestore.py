@@ -100,6 +100,13 @@ def get_docs(query,source=None)->list:
   querySnapshot.forEach(get_docs)
   return ret_list
 
+def arrayUnion(element):
+  return proxy_fs.arrayUnion(element)
+
+def arrayRemove(element):
+  return proxy_fs.arrayRemove(element)
+
+
 def listen_to_docs(query,callback):
   from .helper.listener import Listener
   #import { collection, query, where, onSnapshot } from "firebase/firestore";
