@@ -29,7 +29,7 @@ def initialize_app(config:dict,enable_offline_cache=False)->None:
   authentication.init(app)
   firestore.init(app,enable_offline_cache)
   storage.init(app)
-  #analytics.init(app)
+  analytics.init(app)
 
 
 
