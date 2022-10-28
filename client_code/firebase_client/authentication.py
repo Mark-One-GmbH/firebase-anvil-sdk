@@ -18,7 +18,7 @@ def get_user():
   try:
     return FireUser(anvil.js.await_promise(auth.currentUser))
   except Exception as e:
-    print('No user found ',e)
+    print('Warning user not found ',e)
     return None
 
 def logout():
