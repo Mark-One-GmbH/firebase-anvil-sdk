@@ -114,6 +114,14 @@ def listen_to_docs(query,callback):
   l.unsubscribe = proxy_fs.onSnapshot(query,l._proxy_callback)
   return l
 
+def listen_to_doc(doc_ref,callback):
+  from .helper.listener import Listener
+  #import { collection, query, where, onSnapshot } from "firebase/firestore";
+  l = Listener(callback)
+  l.unsubscribe = proxy_fs.onSnapshot(doc_ref,l._proxy_callback)
+  return l
+  
+
 def write_batch():
   from .helper.batch import Batch
   return Batch(proxy_fs.writeBatch(db))
