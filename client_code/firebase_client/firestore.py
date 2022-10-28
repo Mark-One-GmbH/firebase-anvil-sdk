@@ -38,7 +38,8 @@ def doc(db,collection_name,doc_uid):
 def where(key,operator,value):
   return proxy_fs.where(key,operator,value)
 
-def order_by(attribute,sort_by):
+def order_by(attribute,sort_by='asc'):
+  '''sort_by asc, desc'''
   return proxy_fs.orderBy(attribute,sort_by)
 
 def limit(amount=100):
