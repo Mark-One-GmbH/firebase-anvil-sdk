@@ -28,7 +28,7 @@ class DocListener:
   def _proxy_callback(self,snapshot):
     #TODO convert proxy dict to 
     from . import utility
-    self._callback((doc.id,utility.from_proxy(doc.data())))
+    self._callback((snapshot.id,utility.from_proxy(snapshot.data())))
 
   def unsubscribe(self):
     '''removes the firestore listener'''
