@@ -1,5 +1,6 @@
 import anvil.js
 from .helper import utility
+from datetime import datetime
 
 proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js")
 db = None #initialized with init() -> late
@@ -36,6 +37,7 @@ def doc(db,collection_name,doc_uid):
   return proxy_fs.doc(db, str(collection_name), str(doc_uid))
 
 def where(key,operator,value):
+  if isinstance(value,datetime): value = utility.to_proxy(value)
   return proxy_fs.where(key,operator,value)
 
 def order_by(attribute,sort_by='asc'):
