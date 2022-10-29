@@ -26,7 +26,6 @@ class DocListener:
     self._callback = callback
 
   def _proxy_callback(self,snapshot):
-    #TODO convert proxy dict to 
     from . import utility
     self._callback((snapshot.id,utility.from_proxy(snapshot.data())))
 
