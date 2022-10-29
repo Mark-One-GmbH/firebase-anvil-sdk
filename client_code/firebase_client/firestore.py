@@ -47,6 +47,9 @@ def limit(amount=100):
 def query(collection,where):
   if not isinstance(where,list): where = [where]
   return proxy_fs.query(collection,*where)
+
+def increment(number):
+  return proxy_fs.increment(number)
   
 
 '''Data Manipulation'''
