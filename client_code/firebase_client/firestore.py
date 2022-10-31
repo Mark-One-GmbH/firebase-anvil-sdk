@@ -107,10 +107,10 @@ def get_docs(query,source=None)->list:
   return ret_list
 
 def arrayUnion(element):
-  return proxy_fs.arrayUnion(element)
+  return proxy_fs.arrayUnion(utility.to_proxy(element))
 
 def arrayRemove(element):
-  return proxy_fs.arrayRemove(element)
+  return proxy_fs.arrayRemove(utility.to_proxy(element))
 
 
 def listen_to_docs(query,callback):
