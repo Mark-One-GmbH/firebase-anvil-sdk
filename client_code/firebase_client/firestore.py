@@ -26,7 +26,7 @@ def disable_network():
 
 def enable_network():
   '''reverts disable_network'''
-  anvil.js.await_promise(proxy_fs.disableNetwork(db))
+  anvil.js.await_promise(proxy_fs.enableNetwork(db))
 
 
 '''Helper Methods'''
