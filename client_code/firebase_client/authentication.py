@@ -61,7 +61,7 @@ class FireUser:
     return self.proxy_user.email
 
   def logout(self):
-    self.proxy_user.logout()
+    self.proxy_user.signOut()
   
   def __repr__(self):
     try:
