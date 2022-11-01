@@ -21,7 +21,7 @@ def get_user():
     print('Warning user not found ',e)
     return None
 
-def logout():
+def logout_user():
   anvil.js.await_promise(proxy_auth.signOut(auth))
 
   
@@ -61,7 +61,7 @@ class FireUser:
     return self.proxy_user.email
 
   def logout(self):
-    self.proxy_user.signOut()
+    logout_user()
   
   def __repr__(self):
     try:
