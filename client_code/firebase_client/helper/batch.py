@@ -4,6 +4,9 @@ from . import utility
 class Batch:
   def __init__(self,proxy_batch):
     self.proxy_batch = proxy_batch
+    
+  def add(self,doc_dict):
+    return self.proxy_batch.add(utility.to_proxy(doc_dict))
 
   def set(self,doc_ref,doc_dict,merge=False):
     self.proxy_batch.set(doc_ref, utility.to_proxy(doc_dict),{'merge':merge})
