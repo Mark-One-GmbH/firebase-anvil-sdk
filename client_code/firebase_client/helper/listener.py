@@ -1,4 +1,4 @@
-
+import anvil.js
 
 
 class DocsListener:
@@ -6,6 +6,7 @@ class DocsListener:
     self._unsubscribe = None
     self._callback = callback
 
+  @anvil.js.report_exceptions
   def _proxy_callback(self,snapshot):
     #TODO convert proxy dict to 
     from . import utility

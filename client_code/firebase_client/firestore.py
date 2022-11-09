@@ -113,16 +113,15 @@ def arrayRemove(element):
   return proxy_fs.arrayRemove(utility.to_proxy(element))
 
 
+
 def listen_to_docs(query,callback):
   from .helper.listener import DocsListener
-  #import { collection, query, where, onSnapshot } from "firebase/firestore";
   l = DocsListener(callback)
   l.unsubscribe = proxy_fs.onSnapshot(query,l._proxy_callback)
   return l
 
 def listen_to_doc(doc_ref,callback):
   from .helper.listener import DocListener
-  #import { collection, query, where, onSnapshot } from "firebase/firestore";
   l = DocListener(callback)
   l.unsubscribe = proxy_fs.onSnapshot(doc_ref,l._proxy_callback)
   return l
