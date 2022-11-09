@@ -120,7 +120,7 @@ def listen_to_docs(query,callback):
   l.unsubscribe = proxy_fs.onSnapshot(query,l._proxy_callback)
   return l
   
- @anvil.js.report_exceptions
+@anvil.js.report_exceptions
 def listen_to_doc(doc_ref,callback):
   from .helper.listener import DocListener
   l = DocListener(callback)
