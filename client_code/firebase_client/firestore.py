@@ -117,6 +117,7 @@ def arrayRemove(element):
 def listen_to_docs(query,callback):
   from .helper.listener import DocsListener
   l = DocsListener(callback)
+  print(l)
   l.unsubscribe = proxy_fs.onSnapshot(query,l._proxy_callback)
   return l
   
