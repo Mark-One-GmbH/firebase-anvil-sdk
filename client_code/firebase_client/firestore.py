@@ -58,7 +58,8 @@ def increment(number):
 '''Data Manipulation'''
 def add_doc(collection,doc_data,blocking=True):
   if blocking:
-    return proxy_fs.addDoc(collection,utility.to_proxy(doc_data))
+    doc = proxy_fs.addDoc(collection,utility.to_proxy(doc_data))
+    return doc.id
   else:
     anvil.js.call('addDoc',proxy_fs,collection,utility.to_proxy(doc_data))
 
