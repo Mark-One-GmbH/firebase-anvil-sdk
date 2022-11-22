@@ -8,7 +8,7 @@ auth = None
 
 def init(app):
   global auth
-  auth = proxy_auth.getAuth()
+  auth = proxy_auth.auth
   proxy_auth.setPersistence(auth,proxy_auth.indexedDBLocalPersistence)
   
 
