@@ -3,15 +3,14 @@ Firebase Authentication
 '''
 
 import anvil.js
-proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.14/firebase-auth.js")
+proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.13/firebase-auth.js")
 auth = None
 
 def init(app):
   global auth
-  auth = proxy_auth.auth
+  auth = proxy_auth.getAuth(app)
   proxy_auth.setPersistence(auth,proxy_auth.indexedDBLocalPersistence)
   
-
 
 """Main Methods"""
 def get_user():

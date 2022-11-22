@@ -1,5 +1,5 @@
 import anvil.js
-proxy_storage = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.14/firebase-storage.js")
+proxy_storage = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.13/firebase-storage.js")
 storage = None #initialized with init() -> late
 
 

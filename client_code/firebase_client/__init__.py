@@ -5,7 +5,7 @@ Main Firebase class that handles initialization and access to firebase services
 #main module
 import anvil.js
 
-proxy_firebase = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.14/firebase-app.js")
+proxy_firebase = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.13/firebase-app.js")
 app = None #initializes late by calling intialize_app()
 
 #export sub modules
@@ -24,7 +24,7 @@ def initialize_app(config:dict,enable_offline_cache=False)->None:
   
   #initialize application
   global app
-  app = proxy_firebase.initializeApp(config)
+  app = anvil.js.await_promise(proxy_firebase.initializeApp(config))
   #Initialize sub modules
   authentication.init(app)
   firestore.init(app,enable_offline_cache)

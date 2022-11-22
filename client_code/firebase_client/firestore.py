@@ -2,7 +2,7 @@ import anvil.js
 from .helper import utility
 from datetime import datetime
 
-proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.14/firebase-firestore.js")
+proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.13/firebase-firestore.js")
 db = None #initialized with init() -> late
 
 
