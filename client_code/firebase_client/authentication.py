@@ -3,7 +3,7 @@ Firebase Authentication
 '''
 
 import anvil.js
-proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.13/firebase-auth.js")
+proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js")
 auth = None
 
 def init(app):
