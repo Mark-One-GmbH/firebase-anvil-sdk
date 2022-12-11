@@ -11,7 +11,7 @@ def init(app):
   global functions
   functions = proxy_fs.getFunctions(app)
 
-def call_function(func_name,parameters={}):
+def call(func_name,parameters={}):
   cloud_function = proxy_fs.httpsCallable(functions, func_name);
   result = cloud_function(parameters)
   return result
