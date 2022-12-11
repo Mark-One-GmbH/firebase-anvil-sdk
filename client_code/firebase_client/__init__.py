@@ -12,6 +12,7 @@ app = None #initializes late by calling intialize_app()
 from . import firestore
 from . import authentication
 from . import storage
+from . import functions
 
     
 def initialize_app(config:dict,enable_offline_cache=False)->None:
@@ -29,6 +30,7 @@ def initialize_app(config:dict,enable_offline_cache=False)->None:
   authentication.init(app)
   firestore.init(app,enable_offline_cache)
   storage.init(app)
+  functions.init(app)
 
 
 
