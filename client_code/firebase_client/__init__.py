@@ -15,7 +15,7 @@ from . import storage
 from . import functions
 
     
-def initialize_app(config:dict,enable_offline_cache=False)->None:
+def initialize_app(config:dict,enable_offline_cache=False,function_region=None)->None:
   '''Initializes the firebase class for client side environments'''
   anvil.js.report_all_exceptions(True)
   
@@ -30,7 +30,7 @@ def initialize_app(config:dict,enable_offline_cache=False)->None:
   authentication.init(app)
   firestore.init(app,enable_offline_cache)
   storage.init(app)
-  functions.init(app)
+  functions.init(app,region=function_region)
 
 
 
