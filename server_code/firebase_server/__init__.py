@@ -20,7 +20,7 @@ Client callable functions:
 
 @anvil.server.callable
 def _fs_get_anvil_firestore_auth_token(user_claims=[]):
-    user = anvil.users.get_user()
+  user = anvil.users.get_user()
   user_uid = str(user.get_id())
   
   #create additional claims -> add specific user relevant claims to support security rules
