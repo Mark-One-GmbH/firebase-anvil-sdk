@@ -53,6 +53,9 @@ def query(collection,where):
 
 def increment(number):
   return proxy_fs.increment(number)
+  
+def delete_field():
+  return proxy_fs.deleteField()
 
 def server_timestamp():
   return proxy_fs.serverTimestamp()
