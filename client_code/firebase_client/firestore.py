@@ -126,6 +126,7 @@ def get_docs_from_cache(query):
     
   querySnapshot.forEach(convert_docs)
   return ret_list
+
   
 
 def arrayUnion(element):
