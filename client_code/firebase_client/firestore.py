@@ -108,20 +108,24 @@ def get_docs(query):
   ececutes a query and returns a list of uid,data tuples 
   '''
   querySnapshot = proxy_fs.getDocs(query)
-    
-  def convert_docs(doc):
-    return (doc.id,utility.from_proxy(doc.data()))
-    
-  return [doc for doc in querySnapshot.forEach(convert_docs)]
 
-def get_docs_from_cache(query):
-  #get documents, forcing the sdk to fetch from the offline chache
-  querySnapshot = proxy_fs.getDocFromCache(query)
-    
+  ret_list = []
   def convert_docs(doc):
     ret_list.append((doc.id,utility.from_proxy(doc.data())))
     
-  return [doc for doc in querySnapshot.forEach(convert_docs)]
+  querySnapshot.forEach(convert_docs)
+  return ret_list
+
+def get_docs_from_cache(query):
+  '''get documents, forcing the sdk to fetch from the offline chache'''
+  querySnapshot = proxy_fs.getDocsFromCache(query)
+    
+  ret_list = []
+  def convert_docs(doc):
+    ret_list.append((doc.id,utility.from_proxy(doc.data())))
+    
+  querySnapshot.forEach(convert_docs)
+  return ret_list
   
 
 def arrayUnion(element):
