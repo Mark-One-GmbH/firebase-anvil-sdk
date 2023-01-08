@@ -97,21 +97,32 @@ def get_doc(doc_ref)->tuple:
   else:
     return None,'Document does not exist'
 
-def get_docs(query,source=None)->list:
-  '''ececutes a query and returns a list of uid,data tuples 
-    use: source = "cache" to enfore reads from cache
+def get_doc_from_cache(doc_ref):
+  '''Get Doc from cache - raises an error if not present'''
+  doc_snap = proxy_fs.getDocFromCache(doc_ref)
+  return doc_snap.id,utility.from_proxy(doc_snap.data())
+
+
+def get_docs(query):
   '''
-  if source is None:
-    querySnapshot = proxy_fs.getDocs(query);
-  else:
-    querySnapshot = proxy_fs.getDocs(query,{'source':source});
+  ececutes a query and returns a list of uid,data tuples 
+  '''
+  querySnapshot = proxy_fs.getDocs(query);
     
-  ret_list = []
-  def get_docs(doc):
+  def convert_docs(doc):
     ret_list.append((doc.id,utility.from_proxy(doc.data())))
     
-  querySnapshot.forEach(get_docs)
-  return ret_list
+  return [doc for doc in querySnapshot.forEach(convert_docs)]
+
+def get_docs_from_cache(query):
+  #get documents, forcing the sdk to fetch from the offline chache
+  querySnapshot = proxy_fs.getDocFromCache(query);
+    
+  def convert_docs(doc):
+    ret_list.append((doc.id,utility.from_proxy(doc.data())))
+    
+  return [doc for doc in querySnapshot.forEach(convert_docs)]
+  
 
 def arrayUnion(element):
   return proxy_fs.arrayUnion(utility.to_proxy(element))
