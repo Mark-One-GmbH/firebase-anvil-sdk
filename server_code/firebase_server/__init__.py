@@ -11,6 +11,7 @@ def init_firebase_server(skd_config,bucket_id=None):
   else:
     firebase_admin.initialize_app(credentials.Certificate(skd_config),{'storageBucket': bucket_id})
     return firestore.client(), storage.bucket()
+
     
 """
 Client callable functions:

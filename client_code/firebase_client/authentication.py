@@ -50,7 +50,7 @@ class FireUser:
     if proxy_user is None:
       raise ValueError('Unkown Firebase User')
     self.proxy_user = proxy_user
-
+  
   @property
   def uid(self):
     return self.proxy_user.uid
@@ -61,6 +61,10 @@ class FireUser:
 
   def logout(self):
     logout_user()
+
+  def get_id_token(self,force_refresh=False):
+    return self.proxy_user.getIdToken(force_refresh)
+    
   
   def __repr__(self):
     try:
