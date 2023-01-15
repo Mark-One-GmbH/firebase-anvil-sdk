@@ -63,10 +63,12 @@ class FireUser:
     logout_user()
 
   def get_id_token(self,force_refresh=False):
-    return self.proxy_user.getIdToken(force_refresh)
+    from .helper import utility
+    return utility.from_proxy(self.proxy_user.getIdToken(force_refresh))
 
   def get_id_token_result(self,force_refresh=False):
-    return self.proxy_user.getIdTokenResult(force_refresh)
+    from .helper import utility
+    return utility.from_proxy(self.proxy_user.getIdTokenResult(force_refresh))
     
   
   def __repr__(self):
