@@ -1,10 +1,12 @@
 import anvil.server
-import firebase_admin
-from firebase_admin import credentials, firestore, storage, auth, messaging
+
 
 
 def init_firebase_server(skd_config,bucket_id=None):
   '''Intializes the serer side firestore sdk'''
+  import firebase_admin
+  from firebase_admin import credentials, firestore, storage
+
   if bucket_id is None:
     firebase_admin.initialize_app(credentials.Certificate(skd_config))
     return firestore.client()
@@ -19,6 +21,9 @@ Client callable functions:
 
 @anvil.server.callable
 def _fs_get_anvil_firestore_auth_token(user_claims=[]):
+  import firebase_admin
+  from firebase_admin import auth
+  
   user = anvil.users.get_user()
   user_uid = str(user.get_id())
   
