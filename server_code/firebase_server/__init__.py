@@ -1,7 +1,6 @@
 import anvil.server
 
 
-
 def init_firebase_server(skd_config,bucket_id=None):
   '''Intializes the serer side firestore sdk'''
   import firebase_admin
