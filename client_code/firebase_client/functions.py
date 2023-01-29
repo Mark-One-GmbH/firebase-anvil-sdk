@@ -18,3 +18,11 @@ def call(func_name,parameters={}):
   cloud_function = proxy_fs.httpsCallable(functions, func_name);
   result = cloud_function(parameters)
   return result
+
+def call_v2(function_url,parameters={}):
+  cloud_function = proxy_fs.httpsCallableFromURL(functions, function_url);
+  result = cloud_function(parameters)
+  print(result.data)
+  print(result.data.text)
+
+   
