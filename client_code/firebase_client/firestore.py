@@ -33,8 +33,11 @@ def enable_network():
 def collection(db,collection_name):
   return proxy_fs.collection(db,collection_name)
 
-def doc(db,collection_name,doc_uid):
-  return proxy_fs.doc(db, str(collection_name), str(doc_uid))
+def doc(db,collection_name,doc_uid=None):
+  if doc_uid:
+    return proxy_fs.doc(db, str(collection_name), str(doc_uid))
+  else:
+    return proxy_fs.doc(collection(db,collection_name))
 
 def where(key,operator,value):
   if isinstance(value,datetime): value = utility.to_proxy(value)
