@@ -66,6 +66,7 @@ def server_timestamp():
 
 '''Data Manipulation'''
 def add_doc(collection,doc_data,blocking=True):
+  doc_data['update_timestamp'] = server_timestamp()
   if blocking:
     doc = proxy_fs.addDoc(collection,utility.to_proxy(doc_data))
     return doc.id
@@ -74,12 +75,14 @@ def add_doc(collection,doc_data,blocking=True):
 
 def set_doc(doc_ref,doc_data,merge=False,blocking=True):
   '''Set a document'''
+  doc_data['update_timestamp'] = server_timestamp()
   if blocking:
     return proxy_fs.setDoc(doc_ref,utility.to_proxy(doc_data),{'merge':merge})
   else:
     anvil.js.call('setDoc',proxy_fs,doc_ref,utility.to_proxy(doc_data),merge)
 
 def update_doc(doc_ref,update_dict,blocking=True):
+  doc_data['update_timestamp'] = server_timestamp()
   if blocking:
     return proxy_fs.updateDoc(doc_ref,utility.to_proxy(update_dict))
   else:

@@ -18,33 +18,4 @@ native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.add
     \ persistance')\n  fs.enableIndexedDbPersistence(db)\n  console.log('Enabled persistance')\n\
     }\nfunction enableMultiTabIndexedDbPersistence (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\
     \n  \n</script>"}
-db_schema:
-  users:
-    title: Users
-    client: none
-    server: full
-    columns:
-    - name: email
-      admin_ui: {width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {width: 200}
-      type: bool
-    - name: last_login
-      admin_ui: {width: 200}
-      type: datetime
-    - name: password_hash
-      admin_ui: {width: 200}
-      type: string
-    - name: n_password_failures
-      admin_ui: {width: 200}
-      type: number
-    - name: confirmed_email
-      admin_ui: {width: 200}
-      type: bool
-    - name: signed_up
-      admin_ui: {width: 200}
-      type: datetime
-    - name: remembered_logins
-      admin_ui: {width: 200}
-      type: simpleObject
+db_schema: {}
