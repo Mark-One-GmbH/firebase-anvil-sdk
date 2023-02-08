@@ -82,7 +82,7 @@ def set_doc(doc_ref,doc_data,merge=False,blocking=True):
     anvil.js.call('setDoc',proxy_fs,doc_ref,utility.to_proxy(doc_data),merge)
 
 def update_doc(doc_ref,update_dict,blocking=True):
-  doc_data['update_timestamp'] = server_timestamp()
+  update_dict['update_timestamp'] = server_timestamp()
   if blocking:
     return proxy_fs.updateDoc(doc_ref,utility.to_proxy(update_dict))
   else:
