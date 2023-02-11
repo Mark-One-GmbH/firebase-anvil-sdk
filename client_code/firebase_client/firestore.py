@@ -133,6 +133,8 @@ def get_docs_from_cache(query):
   querySnapshot.forEach(convert_docs)
   return ret_list
 
+def get_collection_group(collection_id):
+  return proxy_fs.collectionGroup(db,collection_id)
   
 
 def arrayUnion(element):
