@@ -6,10 +6,16 @@ import anvil.js
 proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js")
 auth = None
 
-def init(app):
+def init(app,persistence):
   global auth
   auth = proxy_auth.getAuth(app)
-  proxy_auth.setPersistence(auth,proxy_auth.indexedDBLocalPersistence)
+  if persistence == 'local_persistence':
+    proxy_auth.setPersistence(auth,proxy_auth.indexedDBLocalPersistence)
+  elif persistence == 'session_persistence':
+    proxy_auth.setPersistence(auth,proxy_auth.browserSessionPersistence)
+  else:
+    proxy_auth.setPersistence(auth,proxy_auth.browserLocalPersistence)
+    
   
 
 """Main Methods"""
