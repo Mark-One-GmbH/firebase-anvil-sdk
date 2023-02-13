@@ -138,10 +138,16 @@ def get_collection_group(collection_id):
   
 
 def arrayUnion(element):
-  return proxy_fs.arrayUnion(utility.to_proxy(element))
+  if isinstance(element,list):
+    return proxy_fs.arrayUnion(*utility.to_proxy(element))
+  else:
+    return proxy_fs.arrayUnion(utility.to_proxy(element))
 
 def arrayRemove(element):
-  return proxy_fs.arrayRemove(utility.to_proxy(element))
+  if isinstance(element,list):
+    return proxy_fs.arrayRemove(*utility.to_proxy(element))
+  else:
+    return proxy_fs.arrayRemove(utility.to_proxy(element))
 
 
 @anvil.js.report_exceptions
