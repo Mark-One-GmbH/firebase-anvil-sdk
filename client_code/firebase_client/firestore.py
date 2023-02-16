@@ -101,7 +101,7 @@ def get_doc(doc_ref)->tuple:
   if doc_snap.exists():
     return doc_snap.id,utility.from_proxy(doc_snap.data())
   else:
-    return None,'Document does not exist'
+    return None, None
 
 def get_doc_from_cache(doc_ref):
   '''Get Doc from cache - raises an error if not present'''
