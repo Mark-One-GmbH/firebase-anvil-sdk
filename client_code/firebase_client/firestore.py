@@ -109,23 +109,31 @@ def get_doc_from_cache(doc_ref):
   return doc_snap.id,utility.from_proxy(doc_snap.data())
 
 
-def get_docs(query):
+def get_docs(query,callback_func=None):
   '''
   ececutes a query and returns a list of uid,data tuples 
   '''
-  querySnapshot = proxy_fs.getDocs(query)
+  if callback_func:
+    anvil.js.call('getDocsAsync',proxy_fs,query,_get_docs_callback,callback_func)
+  else:
+    querySnapshot = proxy_fs.getDocs(query)
+    return _convert_snapshot(querySnapshot)
 
+def _get_docs_callback(querySnapshot,callback_func):
+  return callback_func(_convert_snapshot(querySnapshot))
+  
+def _convert_snapshot(querySnapshot):
   ret_list = []
   def convert_docs(doc):
     ret_list.append((doc.id,utility.from_proxy(doc.data())))
-    
+  
   querySnapshot.forEach(convert_docs)
   return ret_list
 
 def get_docs_from_cache(query):
   '''get documents, forcing the sdk to fetch from the offline chache'''
   querySnapshot = proxy_fs.getDocsFromCache(query)
-    
+  
   ret_list = []
   def convert_docs(doc):
     ret_list.append((doc.id,utility.from_proxy(doc.data())))

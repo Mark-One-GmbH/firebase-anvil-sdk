@@ -17,5 +17,7 @@ native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.add
     \ {fs.deleteDoc(doc_ref)}\nfunction enableIndexedDbPersistence (fs,db) {\n  console.log('Enabled\
     \ persistance')\n  fs.enableIndexedDbPersistence(db)\n  console.log('Enabled persistance')\n\
     }\nfunction enableMultiTabIndexedDbPersistence (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\
-    \n  \n</script>"}
+    \nfunction getDocsAsync(fs,query,_get_docs_callback,callback_func) {\n  fs.getDocs(query).then((querySnapshot)\
+    \ => {\n    _get_docs_callback(querySnapshot,callback_func);\n  })\n}\n\n  \n\
+    </script>"}
 db_schema: {}
