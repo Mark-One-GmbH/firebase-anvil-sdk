@@ -1,11 +1,13 @@
 import anvil.js
-proxy_storage = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js")
+proxy_storage = None
 storage = None #initialized with init() -> late
 
 
 def init(app):
   '''initalizes the firestore module'''
   global storage
+  global proxy_storage
+  proxy_storage = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js")
   storage = proxy_storage.getStorage(app)
 
 def ref(path):

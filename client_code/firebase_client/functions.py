@@ -2,13 +2,15 @@ import anvil.js
 from .helper import utility
 from datetime import datetime
 
-proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-functions.js")
+proxy_fs = None
 functions = None #initialized with init() -> late
 
 
 def init(app,region=None):
   '''initalizes the firestore module'''
   global functions
+  global proxy_fs
+  proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-functions.js")
   if region:
     functions = proxy_fs.getFunctions(app,region)
   else:

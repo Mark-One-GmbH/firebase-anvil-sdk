@@ -2,13 +2,15 @@ import anvil.js
 from .helper import utility
 from datetime import datetime
 
-proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js")
+proxy_fs = None
 db = None #initialized with init() -> late
 
 
 def init(app,enable_offline_cache=False):
   '''initalizes the firestore module'''
   global db
+  global proxy_fs
+  proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js")
   db = proxy_fs.getFirestore(app)
 
   #TODO configure cache size!
