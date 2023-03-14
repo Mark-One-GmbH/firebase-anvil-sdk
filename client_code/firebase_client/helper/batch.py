@@ -1,4 +1,4 @@
-
+import anvil.js
 from . import utility
 from ..firestore import server_timestamp 
 
@@ -21,6 +21,9 @@ class Batch:
   def delete(self,doc_ref):
     self.proxy_batch.delete(doc_ref)
 
-  def commit(self):
+  def commit(self,blocking=True):
     '''Executes the batch'''
-    self.proxy_batch.commit()
+    if blocking:
+      self.proxy_batch.commit()
+    else:
+      anvil.js.call('batch_commit',self.proxy_batch)
