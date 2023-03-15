@@ -41,6 +41,9 @@ def doc(db,collection_name,doc_uid=None):
   else:
     return proxy_fs.doc(collection(db,collection_name))
 
+def document_id():
+  return proxy_fs.documentId()
+
 def where(key,operator,value):
   if isinstance(value,datetime): value = utility.to_proxy(value)
   return proxy_fs.where(key,operator,value)
@@ -123,6 +126,10 @@ def get_docs(query,callback_func=None):
 
 def _get_docs_callback(querySnapshot,callback_func):
   return callback_func(_convert_snapshot(querySnapshot))
+
+def get_all(doc_refs):
+  querySnapshot = proxy_fs.getDocs(query)
+  return _convert_snapshot(querySnapshot)
   
 def _convert_snapshot(querySnapshot):
   ret_list = []
