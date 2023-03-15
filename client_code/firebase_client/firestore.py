@@ -14,7 +14,6 @@ def init(app,enable_offline_cache=False):
   db = proxy_fs.getFirestore(app)
 
   #TODO configure cache size!
-  print(dir(proxy_fs))
   #Offline Caching
   if enable_offline_cache:
     try:
