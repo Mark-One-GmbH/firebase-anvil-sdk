@@ -19,5 +19,7 @@ native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.add
     \  console.log('Enabled persistance')\n}\nfunction enableMultiTabIndexedDbPersistence\
     \ (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\nfunction getDocsAsync(fs,query,_get_docs_callback,callback_func)\
     \ {\n  fs.getDocs(query).then((querySnapshot) => {\n    _get_docs_callback(querySnapshot,callback_func);\n\
+    \  })\n}\n\nfunction callV2Async(cloudFunction,parameters,_call_v2_callback,callback_func)\
+    \ {\n  cloudFunction(parameters).then((result) => {\n    _call_v2_callback(result,callback_func);\n\
     \  })\n}\n\n  \n</script>"}
 db_schema: {}
