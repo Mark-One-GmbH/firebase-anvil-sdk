@@ -34,7 +34,7 @@ def call_v2(function_url,parameters={},callback_func=None):
 
 
 def _call_v2_callback(result,callback_func):
-  return callback_func(utility.from_proxy(result.data))
+  return callback_func(utility.from_proxy(result))
 
 
    
