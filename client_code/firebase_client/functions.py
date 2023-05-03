@@ -22,12 +22,12 @@ def call(func_name,parameters={}):
   result = cloud_function(utility.to_proxy(parameters))
   return utility.from_proxy(result)
 
-def call_v2(function_url,parameters={},callback_func=None):
+def call_v2(function_url,parameters={},callback_func=None,error_callback_func=None):
   '''calls a cloud function v2 - func_url must be the complete function url!'''
   cloud_function = proxy_fs.httpsCallableFromURL(functions, function_url)
   
   if callback_func:
-    anvil.js.call('callV2Async',cloud_function,utility.to_proxy(parameters),_call_v2_callback,callback_func)
+    anvil.js.call('callV2Async',cloud_function,utility.to_proxy(parameters),_call_v2_callback,callback_func,error_callback_func)
   else:
     result = cloud_function(utility.to_proxy(parameters))
     return utility.from_proxy(result.data)
@@ -35,6 +35,7 @@ def call_v2(function_url,parameters={},callback_func=None):
 
 def _call_v2_callback(result,callback_func):
   return callback_func(utility.from_proxy(result))
+
 
 
    
