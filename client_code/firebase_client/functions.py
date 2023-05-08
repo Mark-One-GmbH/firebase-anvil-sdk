@@ -34,8 +34,10 @@ def call_v2(function_url,parameters={},callback_func=None,error_callback_func=No
     error = None
     result = None
     def on_result(res):
+      print('on result')
       result = res
     def on_error(err):
+      print('on error')
       error = True
 
     #Call Function
