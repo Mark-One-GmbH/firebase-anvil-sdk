@@ -56,7 +56,7 @@ def call_v2(function_url,parameters={},callback_func=None,error_callback_func=No
 
     #return result
     if (datetime.now()-start_time).total_seconds() < timeout:
-      return utility.from_proxy(on_error_ret.data)
+      return utility.from_proxy(on_result_ret.data)
     else:
       raise ValueError('timeout')
 
