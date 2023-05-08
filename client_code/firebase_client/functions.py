@@ -41,11 +41,11 @@ def call_v2(function_url,parameters={},callback_func=None,error_callback_func=No
     anvil.js.call('callV2Async',cloud_function,utility.to_proxy(parameters),_call_v2_callback,on_result,on_error)
 
     #Await Result
-    while error is None and result is None and (datetime.now()-start_time).total_seconds < timeout:
+    while error is None and result is None and (datetime.now()-start_time).total_seconds() < timeout:
       time.sleep(0.05)
 
     #return result
-    if (datetime.now()-start_time).total_seconds < timeout:
+    if (datetime.now()-start_time).total_seconds() < timeout:
       return utility.from_proxy(result.data)
     else:
       raise ValueError('timeout')
