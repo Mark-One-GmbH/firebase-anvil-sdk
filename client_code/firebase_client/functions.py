@@ -35,9 +35,11 @@ def call_v2(function_url,parameters={},callback_func=None,error_callback_func=No
     result = None
     def on_result(res):
       print('on result')
+      global result
       result = res
     def on_error(err):
-      print('on error')
+      print('on error',err)
+      global error
       error = True
 
     #Call Function
