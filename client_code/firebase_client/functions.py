@@ -1,6 +1,7 @@
 import anvil.js
 from .helper import utility
 from datetime import datetime
+import time
 
 proxy_fs = None
 functions = None #initialized with init() -> late
