@@ -26,4 +26,5 @@ class Batch:
     if blocking:
       self.proxy_batch.commit()
     else:
+      print('batch commit',error_callback)
       anvil.js.call('batch_commit',self.proxy_batch,error_callback)

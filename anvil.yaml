@@ -11,13 +11,14 @@ runtime_options: {version: 2, client_version: '3', server_version: python3-full,
   server_persist: true}
 metadata: {title: Firebase Anvil SDK, description: Firebase Anvil SDK}
 startup_form: null
-native_deps: {head_html: "<script>\n\nfunction \n\nfunction addDoc(fs,collection,data){fs.addDoc(collection,data)}\n\
+native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.addDoc(collection,data)}\n\
     function setDoc(fs,doc_ref,data,merge) {fs.setDoc(doc_ref,data,{'merge':merge})}\n\
     function updateDoc(fs,doc_ref,data) {fs.updateDoc(doc_ref,data)}\nfunction deleteDoc(fs,doc_ref)\
-    \ {fs.deleteDoc(doc_ref)}\nfunction batch_commit(fs,error_callback) {\n  try {\n\
-    \    fs.commit()\n\n  } catch (error) {\n    error_callback(error)\n  }\n}\nfunction\
-    \ enableIndexedDbPersistence (fs,db) {fs.enableIndexedDbPersistence(db)}\nfunction\
-    \ enableMultiTabIndexedDbPersistence (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\
+    \ {fs.deleteDoc(doc_ref)}\nasync function batch_commit(fs,error_callback) {\n\
+    \  try {\n    await fs.commit()\n  } catch (error) {\n    console.log('error commiting\
+    \ firestore batch')\n    console.log(error)\n    error_callback(error)\n  }\n\
+    }\nfunction enableIndexedDbPersistence (fs,db) {fs.enableIndexedDbPersistence(db)}\n\
+    function enableMultiTabIndexedDbPersistence (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\
     \nfunction getDocsAsync(fs,query,_get_docs_callback,callback_func) {\n  fs.getDocs(query).then((querySnapshot)\
     \ => {\n    _get_docs_callback(querySnapshot,callback_func);\n  })\n}\n\nfunction\
     \ callV2Async(cloudFunction,parameters,_call_v2_callback,callback_func,error_callback_func)\
