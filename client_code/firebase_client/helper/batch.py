@@ -21,9 +21,9 @@ class Batch:
   def delete(self,doc_ref):
     self.proxy_batch.delete(doc_ref)
 
-  def commit(self,blocking=True):
+  def commit(self,blocking=True,error_callback=None):
     '''Executes the batch'''
     if blocking:
       self.proxy_batch.commit()
     else:
-      anvil.js.call('batch_commit',self.proxy_batch)
+      anvil.js.call('batch_commit',self.proxy_batch,error_callback)
