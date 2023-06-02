@@ -15,13 +15,13 @@ native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.add
     function setDoc(fs,doc_ref,data,merge) {fs.setDoc(doc_ref,data,{'merge':merge})}\n\
     function updateDoc(fs,doc_ref,data) {fs.updateDoc(doc_ref,data)}\nfunction deleteDoc(fs,doc_ref)\
     \ {fs.deleteDoc(doc_ref)}\nasync function batch_commit(fs,error_callback,error_callback_metadata)\
-    \ {\n  try {\n    await fs.commit()\n  } catch (error) {\n    console.log('error\
-    \ commiting firestore batch')\n    console.log(error)\n    error_callback([error,error_callback_metadata])\n\
-    \  }\n}\nfunction enableIndexedDbPersistence (fs,db) {fs.enableIndexedDbPersistence(db)}\n\
-    function enableMultiTabIndexedDbPersistence (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\
-    \nfunction getDocsAsync(fs,query,_get_docs_callback,callback_func) {\n  fs.getDocs(query).then((querySnapshot)\
-    \ => {\n    _get_docs_callback(querySnapshot,callback_func);\n  })\n}\n\nfunction\
-    \ callV2Async(cloudFunction,parameters,_call_v2_callback,callback_func,error_callback_func)\
+    \ {\n  try {\n    await fs.commit()\n    throw('some error')\n  } catch (error)\
+    \ {\n    console.log('error commiting firestore batch')\n    console.log(error)\n\
+    \    error_callback([error,error_callback_metadata])\n  }\n}\nfunction enableIndexedDbPersistence\
+    \ (fs,db) {fs.enableIndexedDbPersistence(db)}\nfunction enableMultiTabIndexedDbPersistence\
+    \ (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\nfunction getDocsAsync(fs,query,_get_docs_callback,callback_func)\
+    \ {\n  fs.getDocs(query).then((querySnapshot) => {\n    _get_docs_callback(querySnapshot,callback_func);\n\
+    \  })\n}\n\nfunction callV2Async(cloudFunction,parameters,_call_v2_callback,callback_func,error_callback_func)\
     \ {\n  cloudFunction(parameters).then((result) => {\n    _call_v2_callback(result.data,callback_func);\n\
     \  }).catch((e) => {\n    _call_v2_callback(e,error_callback_func);\n  })\n}\n\
     \n  \n</script>"}
