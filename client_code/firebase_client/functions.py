@@ -11,7 +11,7 @@ def init(app,region=None):
   '''initalizes the firestore module'''
   global functions
   global proxy_fs
-  proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.12.1/firebase-functions.js")
+  proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.22.1/firebase-functions.js")
   if region:
     functions = proxy_fs.getFunctions(app,region)
   else:
