@@ -14,9 +14,11 @@ startup_form: null
 native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.addDoc(collection,data)}\n\
     function setDoc(fs,doc_ref,data,merge) {fs.setDoc(doc_ref,data,{'merge':merge})}\n\
     function updateDoc(fs,doc_ref,data) {fs.updateDoc(doc_ref,data)}\nfunction deleteDoc(fs,doc_ref)\
-    \ {fs.deleteDoc(doc_ref)}\nasync function batch_commit(fs,error_callback,error_callback_metadata)\
-    \ {\n  try {\n    await fs.commit()\n    //throw('some error')\n  } catch (error)\
-    \ {\n    console.log('error commiting firestore batch')\n    console.log(error)\n\
+    \ {fs.deleteDoc(doc_ref)}\n\nfunction batch_commit(fs,error_callback,error_callback_metadata)\
+    \ {\n  batch_commit_async(fs,error_callback,error_callback_metadata)\n}\n\nasync\
+    \ function batch_commit_async(fs,error_callback,error_callback_metadata) {\n \
+    \ try {\n    await fs.commit()\n    //throw('some error')\n  } catch (error) {\n\
+    \    console.log('error commiting firestore batch')\n    console.log(error)\n\
     \    error_callback([error,error_callback_metadata])\n  }\n}\nfunction enableIndexedDbPersistence\
     \ (fs,db) {fs.enableIndexedDbPersistence(db)}\nfunction enableMultiTabIndexedDbPersistence\
     \ (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\nfunction getDocsAsync(fs,query,_get_docs_callback,callback_func)\
