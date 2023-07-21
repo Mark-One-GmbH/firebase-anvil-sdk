@@ -1,5 +1,3 @@
-import anvil.js
-
 
 class DocsListener:
   def __init__(self,callback):
