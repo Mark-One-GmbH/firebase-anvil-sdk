@@ -35,7 +35,7 @@ def call_v2(function_url,parameters={},callback_func=None,error_callback_func=No
   else:
     start_time = datetime.now()
 
-    delete_keys = [res_uid for res_uid,result_dict in on_result_dict.items() if (result_dict.get('timestamp') + timedelta(seconds=30)) < start_time]
+    delete_keys = [res_uid for res_uid,result_dict in on_result_dict.items() if (result_dict.get('timestamp') + timedelta(seconds=60)) < start_time]
     for delete_key in delete_keys:
       on_result_dict.pop(delete_key)
 
