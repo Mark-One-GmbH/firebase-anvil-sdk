@@ -48,3 +48,9 @@ def to_proxy(obj):
     return obj
   
 
+
+def get_uid():
+  import random
+  hexdigits = "0123456789ABCDEF"
+  random_digits = "".join([ hexdigits[random.randint(0,0xF)] for _ in range(32) ])
+  return random_digits
