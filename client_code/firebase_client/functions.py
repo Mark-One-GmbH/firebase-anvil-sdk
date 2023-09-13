@@ -24,8 +24,8 @@ def call(func_name,parameters={}):
   return utility.from_proxy(result)
 
 
-on_error_ret = None
-on_result_ret = None
+#on_error_ret = None
+#on_result_ret = None
 def call_v2(function_url,parameters={},callback_func=None,error_callback_func=None,timeout=60):
   '''calls a cloud function v2 - func_url must be the complete function url!'''
   cloud_function = proxy_fs.httpsCallableFromURL(functions, function_url)
