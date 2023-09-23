@@ -26,7 +26,7 @@ def initialize_app(config:dict,enable_offline_cache=False,function_region=None,p
   #initialize application
   global proxy_firebase
   global app
-  proxy_firebase = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js")
+  proxy_firebase = anvil.js.import_from("https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js")
   app = anvil.js.await_promise(proxy_firebase.initializeApp(config))
   #Initialize sub modules
   authentication.init(app,persistence)

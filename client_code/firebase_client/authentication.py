@@ -9,7 +9,7 @@ auth = None
 def init(app,persistence):
   global proxy_auth
   global auth
-  proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js")
+  proxy_auth = anvil.js.import_from("https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js")
   auth = proxy_auth.getAuth(app)
   if persistence == 'local_persistence':
     proxy_auth.setPersistence(auth,proxy_auth.indexedDBLocalPersistence)
