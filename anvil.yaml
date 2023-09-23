@@ -23,8 +23,8 @@ native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.add
     \ (fs,db) {fs.enableIndexedDbPersistence(db)}\nfunction enableMultiTabIndexedDbPersistence\
     \ (fs,db) {fs.enableMultiTabIndexedDbPersistence(db)}\n\nfunction getDocsAsync(fs,query,_get_docs_callback,callback_func)\
     \ {\n  fs.getDocs(query).then((querySnapshot) => {\n    _get_docs_callback(querySnapshot,callback_func);\n\
-    \  })\n}\n\nfunction callV2Async(cloudFunction,parameters,_call_v2_callback,callback_func,error_callback_func)\
-    \ {\n  cloudFunction(parameters).then((result) => {\n    _call_v2_callback(result.data,callback_func);\n\
-    \  }).catch((e) => {\n    _call_v2_callback(e,error_callback_func);\n  })\n}\n\
-    \n  \n</script>"}
+    \  })\n}\n\nfunction callV2Async(cloudFunction,parameters,_call_v2_callback,callback_func,error_callback_func,uid)\
+    \ {\n  cloudFunction(parameters).then((result) => {\n    _call_v2_callback(result.data,callback_func,uid);\n\
+    \  }).catch((e) => {\n    _call_v2_callback(e,error_callback_func,uid);\n  })\n\
+    }\n\n  \n</script>"}
 db_schema: {}
