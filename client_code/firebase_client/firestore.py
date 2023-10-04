@@ -11,7 +11,7 @@ def init(app,enable_offline_cache=False):
   global db
   global proxy_fs
   proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js")
-  db = proxy_fs.getFirestore(app,{'experimentalForceLongPolling':True})
+  db = proxy_fs.initializeFirestore(app,{'experimentalForceLongPolling':True})
 
   #TODO configure cache size!
   #Offline Caching
