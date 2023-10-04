@@ -27,7 +27,7 @@ def initialize_app(config:dict,enable_offline_cache=False,function_region=None,p
   global proxy_firebase
   global app
   proxy_firebase = anvil.js.import_from("https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js")
-  app = anvil.js.await_promise(proxy_firebase.initializeApp(config))
+  app = anvil.js.await_promise(proxy_firebase.initializeApp(config,{'experimentalForceLongPolling':True}))
   #Initialize sub modules
   authentication.init(app,persistence)
   firestore.init(app,enable_offline_cache)
