@@ -153,6 +153,10 @@ def get_docs_from_cache(query):
   querySnapshot.forEach(convert_docs)
   return ret_list
 
+def get_count_from_server(query):
+  query_snapshot = proxy_fs.getCountFromServer(query)
+  return query_snapshot.data().count
+
 def get_collection_group(collection_id):
   return proxy_fs.collectionGroup(db,collection_id)
   
