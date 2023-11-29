@@ -120,7 +120,7 @@ def get_doc_from_cache(doc_ref):
   return doc_snap.id,utility.from_proxy(doc_snap.data())
 
 
-def get_docs(query,callback_func=None):
+def get_docs(query,callback_func=None, with_doc_snapshot=False):
   '''
   ececutes a query and returns a list of uid,data tuples 
   '''
@@ -128,7 +128,7 @@ def get_docs(query,callback_func=None):
     anvil.js.call('getDocsAsync',proxy_fs,query,_get_docs_callback,callback_func)
   else:
     querySnapshot = proxy_fs.getDocs(query)
-    return _convert_snapshot(querySnapshot)
+    return _convert_snapshot(querySnapshot, with_doc_snapshot=with_doc_snapshot)
 
 def _get_docs_callback(querySnapshot,callback_func):
   return callback_func(_convert_snapshot(querySnapshot))
@@ -137,10 +137,13 @@ def get_all(doc_refs):
   querySnapshot = proxy_fs.getDocs(query)
   return _convert_snapshot(querySnapshot)
   
-def _convert_snapshot(querySnapshot):
+def _convert_snapshot(querySnapshot, with_doc_snapshot=False):
   ret_list = []
   def convert_docs(doc):
-    ret_list.append((doc.id,utility.from_proxy(doc.data())))
+    if with_doc_snapshot:
+      ret_list.append((doc,doc.id,utility.from_proxy(doc.data())))
+    else:
+      ret_list.append((doc.id,utility.from_proxy(doc.data())))
   
   querySnapshot.forEach(convert_docs)
   return ret_list
