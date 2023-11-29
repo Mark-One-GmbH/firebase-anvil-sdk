@@ -58,6 +58,9 @@ def order_by(attribute,sort_by='asc'):
 def limit(amount=100):
   return proxy_fs.limit(amount)
 
+def start_after(doc):
+  return proxy_fs.startAfter(doc)
+
 def query(collection,where):
   if not isinstance(where,list): where = [where]
   return proxy_fs.query(collection,*where)
