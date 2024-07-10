@@ -45,7 +45,8 @@ def sign_in_with_email(email,password):
 
 def sign_in_with_token(token):
   '''Login with a custom token generated with the firebase sdk'''
-  return anvil.js.await_promise(proxy_auth.signInWithCustomToken(auth,token))
+  userCredential = anvil.js.await_promise(proxy_auth.signInWithCustomToken(auth,token))
+  return FireUser(userCredential.user)
 
 def login_with_anvil(user_claims=[]):
   import anvil.server

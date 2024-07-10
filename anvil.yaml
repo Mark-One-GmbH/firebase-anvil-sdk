@@ -7,8 +7,12 @@ startup: {type: module, module: readme}
 package_name: firebase
 allow_embedding: false
 name: Firebase Anvil SDK
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null,
-  server_persist: true}
+runtime_options:
+  version: 2
+  client_version: '3'
+  server_version: python3-full
+  server_spec: {base: python310-minimal}
+  server_persist: true
 metadata: {title: Firebase Anvil SDK, description: Firebase Anvil SDK}
 startup_form: null
 native_deps: {head_html: "<script>\n\nfunction addDoc(fs,collection,data){fs.addDoc(collection,data)}\n\

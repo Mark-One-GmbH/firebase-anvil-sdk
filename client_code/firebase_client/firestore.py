@@ -6,12 +6,12 @@ proxy_fs = None
 db = None #initialized with init() -> late
 
 
-def init(app,enable_offline_cache=False):
+def init(app,database=None,enable_offline_cache=False):
   '''initalizes the firestore module'''
   global db
   global proxy_fs
   proxy_fs = anvil.js.import_from("https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js")
-  db = proxy_fs.getFirestore(app)
+  db = proxy_fs.getFirestore(app) if not database else proxy_fs.getFirestore(app,database)
 
   #TODO configure cache size!
   #Offline Caching
@@ -20,7 +20,7 @@ def init(app,enable_offline_cache=False):
       anvil.js.call('enableMultiTabIndexedDbPersistence',proxy_fs,db)
     except Exception as e:
       print('Error enabeling offline persistance',e)
-    
+
 def disable_network():
   '''forces all subsequent queries to the offline cache'''
   anvil.js.await_promise(proxy_fs.disableNetwork(db))
@@ -60,13 +60,13 @@ def query(collection,where):
 
 def increment(number):
   return proxy_fs.increment(number)
-  
+
 def delete_field():
   return proxy_fs.deleteField()
 
 def server_timestamp():
   return proxy_fs.serverTimestamp()
-  
+
 
 '''Data Manipulation'''
 def add_doc(collection,doc_data,blocking=True):
@@ -98,7 +98,7 @@ def delete_doc(doc_ref,blocking=True):
   else:
     anvil.js.call('deleteDoc',proxy_fs,doc_ref)
 
-  
+
 def get_doc(doc_ref)->tuple:
   '''Returns uid,data or None,Error '''
   doc_snap = proxy_fs.getDoc(doc_ref)
@@ -115,7 +115,7 @@ def get_doc_from_cache(doc_ref):
 
 def get_docs(query,callback_func=None):
   '''
-  ececutes a query and returns a list of uid,data tuples 
+  ececutes a query and returns a list of uid,data tuples
   '''
   if callback_func:
     anvil.js.call('getDocsAsync',proxy_fs,query,_get_docs_callback,callback_func)
@@ -129,29 +129,33 @@ def _get_docs_callback(querySnapshot,callback_func):
 def get_all(doc_refs):
   querySnapshot = proxy_fs.getDocs(query)
   return _convert_snapshot(querySnapshot)
-  
+
 def _convert_snapshot(querySnapshot):
   ret_list = []
   def convert_docs(doc):
     ret_list.append((doc.id,utility.from_proxy(doc.data())))
-  
+
   querySnapshot.forEach(convert_docs)
   return ret_list
 
 def get_docs_from_cache(query):
   '''get documents, forcing the sdk to fetch from the offline chache'''
   querySnapshot = proxy_fs.getDocsFromCache(query)
-  
+
   ret_list = []
   def convert_docs(doc):
     ret_list.append((doc.id,utility.from_proxy(doc.data())))
-    
+
   querySnapshot.forEach(convert_docs)
   return ret_list
 
 def get_collection_group(collection_id):
   return proxy_fs.collectionGroup(db,collection_id)
-  
+
+def get_count_from_server(query):
+  snapshot = anvil.js.await_promise(proxy_fs.getCountFromServer(query))
+  count = snapshot.data().count
+  return count
 
 def arrayUnion(element):
   if isinstance(element,list):
@@ -172,14 +176,18 @@ def listen_to_docs(query,callback):
   l = DocsListener(callback)
   l.unsubscribe = proxy_fs.onSnapshot(query,l._proxy_callback)
   return l
-  
+
 @anvil.js.report_exceptions
 def listen_to_doc(doc_ref,callback):
   from .helper.listener import DocListener
   l = DocListener(callback)
   l.unsubscribe = proxy_fs.onSnapshot(doc_ref,l._proxy_callback)
   return l
-  
+
+@anvil.js.report_exceptions
+def on_snapshot(query,callback):
+  unsubscribe = proxy_fs.onSnapshot(query,callback)
+  return unsubscribe
 
 def write_batch():
   from .helper.batch import Batch
@@ -188,11 +196,3 @@ def write_batch():
 def run_transaction(function):
   '''Takes in a function which must be run as a transaction'''
   return anvil.js.await_promise(proxy_fs.runTransaction(db,function))
-
-
-  
-
-
-
-
-
